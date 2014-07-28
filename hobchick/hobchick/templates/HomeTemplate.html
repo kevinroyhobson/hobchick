@@ -10,6 +10,8 @@
     <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link rel='stylesheet' type='text/css' href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
     <style>
         .my-fluid-container {
           padding-left: 15px;
@@ -64,12 +66,11 @@
         }
 
         .hob-name-start {
-            text-align: left;
             float: left;
         }
 
         .son-name-start {
-            text-align: left;
+            float:left;
         }
 
         .san-name-start {
@@ -83,8 +84,10 @@
         }
 
         .hobson-column {
+            position: absolute;
             width: 50%;
             float: left;
+            left: 0;
         }
 
         .sanchick-column {
@@ -141,3 +144,14 @@
     {{ weddingDate }}
 </body>
 </html>
+
+<script type="text/javascript">
+    $(function() {
+        $('.son-name-start').animate({opacity: '0'}, 1500);
+        $('.san-name-start').animate({opacity: '0'}, 1500);
+        $('.hobson-column').animate({marginLeft: '700px' }, 2000);
+        $('.sanchick-column').animate({marginRight:'600px' }, 2000);
+
+
+    });
+</script>
