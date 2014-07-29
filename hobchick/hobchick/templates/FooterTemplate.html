@@ -1,0 +1,12 @@
+<div class="footer">
+    <div class="white-text text-center slug">
+        <a class="slug-link" href="/">{{footer.slug}}</a>
+    </div>
+    <div class="footer-links">
+        {% for link in footer.links %}
+
+            <a class="footer-link" href="{{link.url}}">{{link.display}}</a>
+
+        {% endfor %}
+    </div>
+</div>

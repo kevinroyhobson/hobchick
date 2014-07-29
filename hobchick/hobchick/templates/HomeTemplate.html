@@ -7,96 +7,7 @@
     <meta charset='UTF-8'>
     <title>Hobchick 2015</title>
 
-    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link rel='stylesheet' type='text/css' href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-    <style>
-        .my-fluid-container {
-          padding-left: 15px;
-          padding-right: 15px;
-          margin-left: auto;
-          margin-right: auto;
-          background-color: black;
-          height: 100%;
-        }
-
-        .white-text {
-            color:white;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .heading-1 {
-            font-size: 70px;
-            letter-spacing: 20px;
-        }
-
-        .heading-2 {
-            font-size: 20px;
-            letter-spacing: 15px;
-        }
-
-        .full-height: {
-            height: 100%;
-        }
-
-        img .banner {
-            width: 100%;
-        }
-
-        img.banner.banner-left {
-
-        }
-
-        .footer {
-            position: absolute;
-            bottom: 0;
-            padding-bottom: 25px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-            width: 100%;
-        }
-
-        .picture-placeholder {
-            font-size: 300px;
-            text-align: center;
-            padding-top: 175px;
-        }
-
-        .hob-name-start {
-            float: left;
-        }
-
-        .son-name-start {
-            float:left;
-        }
-
-        .san-name-start {
-            text-align: right;
-            display: inline;
-        }
-
-        .chick-name-start {
-            text-align: right;
-            float: right;
-        }
-
-        .hobson-column {
-            position: absolute;
-            width: 50%;
-            float: left;
-            left: 0;
-        }
-
-        .sanchick-column {
-            width: 50%;
-            float: right;
-            text-align: right;
-        }
-
-    </style>
+    {% include "IncludesTemplate.html" %}
 
 </head>
 <body style="height:100%;">
@@ -114,7 +25,7 @@
         </div>
     </div>
 
-    <div class="footer white-text text-center">
+    <div class="hobchick-animation white-text text-center">
         <div class="heading-1">
             <div class="hobson-column">
                 <div class="hob-name-start">
@@ -135,23 +46,21 @@
             </div>
         </div>
         <div class="clearfix"></div>
-        <div class="white-text text-center heading-2">
-            7.4.15
-        </div>
-    </div>
+     </div>
 
+    {% include "FooterTemplate.html" %}
 
-    {{ weddingDate }}
 </body>
 </html>
 
 <script type="text/javascript">
     $(function() {
-        $('.son-name-start').animate({opacity: '0'}, 1500);
-        $('.san-name-start').animate({opacity: '0'}, 1500);
-        $('.hobson-column').animate({marginLeft: '700px' }, 2000);
-        $('.sanchick-column').animate({marginRight:'600px' }, 2000);
+        setTimeout(function() {
+            $('.son-name-start').animate({opacity: '0'}, 1500);
+            $('.san-name-start').animate({opacity: '0'}, 1500);
+            $('.hobson-column').animate({marginLeft: '700px' }, 2000);
+            $('.sanchick-column').animate({marginRight:'600px' }, 2000);
+        }, 1000)}
 
-
-    });
+    );
 </script>

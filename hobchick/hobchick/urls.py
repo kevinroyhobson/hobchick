@@ -1,7 +1,8 @@
 from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
-from hobchick.views.HomeVIew import HomeView
+from hobchick.views.WhenView import WhenView
+from hobchick.views.HomeView import HomeView
 
 admin.autodiscover()
 
@@ -12,4 +13,5 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', HomeView.as_view()),
+    url(r'^when/$', WhenView.as_view()),
 )
