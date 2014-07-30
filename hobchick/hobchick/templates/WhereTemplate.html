@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+  <head>
+
+    <title>Hobchick 2015 - Where</title>
+
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+    {% include "IncludesTemplate.html" %}
+      <link rel='stylesheet' type='text/css' href='{% static "css/inverted.css" %}'>
+      <link rel='stylesheet' type='text/css' href='{% static "css/where.css" %}'>
+
+    <script type='text/javascript' src='//maps.googleapis.com/maps/api/js?key=AIzaSyCQjrCukqm1O1Py-hKp2jg9fpzhmc4-PcI'></script>
+    <script type='text/javascript' src='{% static "js/where.js" %}'></script>
+  </head>
+  <body>
+    <div id="map-canvas">
+
+    </div>
+
+    {% include "FooterTemplate.html" %}
+
+  </body>
+</html>
