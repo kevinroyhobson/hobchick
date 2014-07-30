@@ -1,6 +1,12 @@
 <div class="footer">
-    <div class="white-text text-center slug">
-        <a class="slug-link" href="/">{{footer.slug}}</a>
+    <div class="main-text text-center slug">
+        {% if footer.slug.link != None %}
+            <a class="slug-link" href="{{footer.slug.link}}">
+        {% endif %}
+        {{footer.slug.display}}
+        {% if footer.slug.link != None %}
+            </a>
+        {% endif %}
     </div>
     <div class="footer-links">
         {% for link in footer.links %}

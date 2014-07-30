@@ -13,5 +13,5 @@ class HomeView(View):
     def get(self, request):
         model = {}
         model['footer'] = self._navigationFactory.getFooter()
-        model['footer']['slug'] = '7.4.15'
+        model['footer']['slug'] = {'display': '7.4.15', 'link': None}
         return render_to_response('HomeTemplate.html', model, context_instance=RequestContext(request))
