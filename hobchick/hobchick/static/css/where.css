@@ -8,4 +8,36 @@ body {
 
 #map-canvas {
     height: 100%;
-s}
+}
+
+.where-block {
+    font-size: 50px;
+    letter-spacing: 2px;
+    padding-top: 10%;
+}
+
+.where-question {
+    text-align: center;
+}
+
+.where-answers {
+    text-align: center;
+    padding-top: 100px;
+}
+
+.where-answer {
+    cursor: pointer;
+}
+
+.ohio-answer {
+    float: left;
+    padding-left:25%;
+}
+
+.new-york-answer {
+}
+
+.elsewhere-answer {
+    padding-top: 50px;
+    font-size:35px;
+}
