@@ -6,6 +6,10 @@ body {
     height: 100%
 }
 
+.map-wrapper {
+    height: 100%
+}
+
 #map-canvas {
     height: 100%;
 }
@@ -40,4 +44,18 @@ body {
 .elsewhere-answer {
     padding-top: 50px;
     font-size:35px;
+}
+
+.your-address {
+    opacity: 0;
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    z-index: 99;
+    background-color: white;
+    font-size: 32px;
+}
+
+.map-wrapper {
+    /*position: relative;*/
 }

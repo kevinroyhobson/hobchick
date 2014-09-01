@@ -10,6 +10,9 @@ $(function() {
         var zoomLevel = $(self).attr('data-zoomLevel');
 
         initializeMap(latitude, longitude, zoomLevel);
+
+        $('.your-address').animate({'opacity': '1.0'}, 3000);
+        $('.address-answer').focus();
     });
 
 });
