@@ -1,20 +1,9 @@
 
 $(function() {
-    $('.where-answer').bind('click', function() {
-        var self = this;
-
-        $('.where-block').hide();
-
-        var latitude = $(self).attr('data-latitude');
-        var longitude = $(self).attr('data-longitude');
-        var zoomLevel = $(self).attr('data-zoomLevel');
-
-        initializeMap(latitude, longitude, zoomLevel);
-    });
-
+    initializeMap();
 });
 
-function initializeMap(latitude, longitude, zoomLevel) {
+function initializeMap() {
 
     var styleArray = [
      {
@@ -146,8 +135,8 @@ function initializeMap(latitude, longitude, zoomLevel) {
     ];
 
     var mapOptions = {
-      center: new google.maps.LatLng(latitude, longitude),
-      zoom: Number(zoomLevel),
+      center: new google.maps.LatLng(39.966333, -79.383484),
+      zoom: Number(12),
       styles: styleArray,
       disableDefaultUI: true
     };
@@ -155,5 +144,32 @@ function initializeMap(latitude, longitude, zoomLevel) {
     var canvas = $('#map-canvas');
     canvas.height(canvas.height() - 100);
     var map = new google.maps.Map(canvas[0], mapOptions);
+
+
+    // Fallingwater marker
+    var fallingwater = new google.maps.Marker({
+      position: new google.maps.LatLng(39.906543, -79.467870),
+      map: map,
+      title: 'Fallingwater'
+    });
+
+    // The Barn at Fallingwater marker
+    var barn = new google.maps.Marker({
+      position: new google.maps.LatLng(39.906987, -79.460188),
+      map: map,
+      title: 'The Barn at Fallingwater'
+    });
+
+    // Seven Springs marker
+    var barn = new google.maps.Marker({
+      position: new google.maps.LatLng(40.021732, -79.294234),
+      map: map,
+      title: 'Seven Springs Mountain Resort'
+    });
+
+
+
+
+
 
   }
