@@ -3,6 +3,7 @@ var maxScreenWidth;
 var maxScreenHeight;
 var padding = 20;
 var heightToWidthRatio = 7.0 / 5.0;
+var numTotalPics = 55;
 
 $(function() {
 
@@ -39,8 +40,10 @@ function changePicture(screen) {
     $(screen).animate({'opacity':'0.0'}, 1000);
 
     window.setTimeout(function() {
-            $(screen).css({'background-color': getRandomColor()});
-        }, 1000);
+        var picNumber = Math.floor(Math.random() * numTotalPics);
+        var pathToPic = '/static/img/why/' + picNumber + '.jpg'
+        $(screen).css('background-image', 'url(' + pathToPic + ')');
+    }, 1000);
 
     $(screen).animate({'opacity':'1.0'}, 1000);
 
