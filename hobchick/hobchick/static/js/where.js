@@ -1,7 +1,18 @@
 
 $(function() {
     initializeMap();
+    $('.footer').css('border-top', '1px dotted grey');
+    onResize();
+    $(window).resize(function() {
+        onResize();
+    });
 });
+
+function onResize() {
+    var canvas = $('#map-canvas');
+    var footerHeight = $('.footer').outerHeight();
+    canvas.height($(window).height() - footerHeight);
+}
 
 function initializeMap() {
 
@@ -142,7 +153,6 @@ function initializeMap() {
     };
 
     var canvas = $('#map-canvas');
-    canvas.height(canvas.height() - 100);
     var map = new google.maps.Map(canvas[0], mapOptions);
 
 

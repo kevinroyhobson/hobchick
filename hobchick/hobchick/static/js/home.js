@@ -1,9 +1,13 @@
 $(function() {
     setTimeout(function() {
+
+        var marginLeft = $('.hobson-column').width() - $('.hob-name-start').width() - 25;
+        var marginRight = $('.sanchick-column').width() - $('.chick-name-start').width() - 25;
+
         $('.son-name-start').animate({opacity: '0'}, 1500);
         $('.san-name-start').animate({opacity: '0'}, 1500);
-        $('.hobson-column').animate({marginLeft: '700px' }, 2000);
-        $('.sanchick-column').animate({marginRight:'600px' }, 2000);
+        $('.hobson-column').animate({marginLeft: marginLeft + 'px' }, 2000);
+        $('.sanchick-column').animate({marginRight: marginRight + 'px' }, 2000);
     }, 1000)}
 
 );
