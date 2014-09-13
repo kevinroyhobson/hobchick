@@ -2,14 +2,11 @@
 var maxScreenWidth;
 var maxScreenHeight;
 var padding = 20;
+var heightToWidthRatio = 7.0 / 5.0;
 
 $(function() {
 
-    maxScreenWidth = Math.floor(($(window).width() - padding * 6) / 3);
-    maxScreenHeight = Math.floor(($(window).height() - $('.footer').height() - padding * 6) / 3);
-
-    $('.screen').width(maxScreenWidth + 'px');
-    $('.screen').height(maxScreenHeight + 'px');
+    onResize();
 
     _.each($('.screen'), function(screen) {
 
@@ -20,7 +17,21 @@ $(function() {
 
     });
 
+    $(window).resize(function () {
+        onResize();
+    });
+
 });
+
+function onResize() {
+    var maxScreenHeight = Math.floor(($(window).height() - $('.footer').height() - padding * 6) / 3);
+    var maxScreenWidth = Math.floor(maxScreenHeight * heightToWidthRatio);
+    var mainContainerWidth = Math.floor(maxScreenWidth * 3 + padding * 4);
+
+    $('.why-main-container').width(mainContainerWidth + 'px');
+    $('.screen').width(maxScreenWidth + 'px');
+    $('.screen').height(maxScreenHeight + 'px');
+}
 
 
 function changePicture(screen) {
