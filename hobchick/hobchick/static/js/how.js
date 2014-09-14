@@ -14,6 +14,8 @@ var kevHeight = 51;
 var intervalVar;
 var kevImage;
 
+var boundarySet;
+
 $(function() {
 
     // center the maze
@@ -26,6 +28,13 @@ $(function() {
     context = canvas.getContext("2d");
 
     drawMaze();
+
+    // Construct a set of all the black pixels. We'll use it later for boundary checking.
+    setTimeout(function() {
+        boundarySet = constructBoundarySet();
+    }, 50);
+
+
 
     setTimeout(function() {
         drawKev(currRectX, currRectY);
@@ -61,6 +70,24 @@ function makeWhite(x, y, w, h) {
     context.closePath();
     context.fillStyle = "white";
     context.fill();
+}
+
+function constructBoundarySet() {
+    var boundarySet = {};
+    var imgData = context.getImageData(0, 0, mazeWidth, mazeHeight);
+    var data = imgData.data;
+
+    for (var i = 0; i < 4 * mazeWidth * mazeHeight; i += 4) {
+        if (data[i] === 0 && data[i + 1] === 0 && data[i + 2] === 0) { // black
+
+            var index = i / 4;
+            var y = Math.floor(index / mazeWidth);
+            var x = index - (y * mazeWidth);
+
+            boundarySet[x + ',' + y] = true;
+        }
+    }
+    return boundarySet;
 }
 
 function moveKev(e) {
@@ -113,18 +140,29 @@ function moveKev(e) {
 }
 
 function canMoveTo(destX, destY) {
-    var imgData = context.getImageData(destX + (kevWidth/4), destY + (kevHeight/4), kevWidth/2, kevHeight/2);
-    var data = imgData.data;
     var canMove = 1; // 1 means: the rectangle can move
+
+    var topToCheck = destY + Math.floor(kevHeight/4);
+    var bottomToCheck = topToCheck + Math.floor(kevHeight/2);
+    var leftToCheck = destX + Math.floor(kevWidth/4);
+    var rightToCheck = leftToCheck + Math.floor(kevWidth/2);
+
+    // Debug: so you can see the space we're comparing against the boundary
+    //makeWhite(leftToCheck, topToCheck, Math.floor(kevWidth/2), Math.floor(kevHeight/2));
+
     if (destX >= 0 && destX <= mazeWidth - kevWidth/2 && destY >= 0 && destY <= mazeHeight - kevHeight/2) { // check whether the rectangle would move inside the bounds of the canvas
-        for (var i = 0; i < 4 * kevWidth/2 * kevHeight/2; i += 4) { // look at all pixels
-            if (data[i] === 0 && data[i + 1] === 0 && data[i + 2] === 0) { // black
-                canMove = 0; // 0 means: the rectangle can't move
-                break;
-            }
-            else if (data[i] === 0 && data[i + 1] === 255 && data[i + 2] === 0) { // lime: #00FF00
-                canMove = 2; // 2 means: the end point is reached
-                break;
+        for (var xToCheck = leftToCheck; xToCheck < rightToCheck; xToCheck++) {
+            for (var yToCheck = topToCheck; yToCheck < bottomToCheck; yToCheck++) {
+
+                var strToCheck = xToCheck + ',' + yToCheck;
+
+                if (boundarySet[strToCheck] == true) {
+                    return 0; // there's a pixel that overlaps with a boundary -- we can't move here.
+                }
+                else if (false) {
+                    // add a check here for if you won
+                    canMove = 2; // 2 means you win.
+                }
             }
         }
     }
