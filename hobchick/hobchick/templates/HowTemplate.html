@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html style="height:100%;">
+<head lang='en'>
+    <meta charset='UTF-8'>
+    <title>Hobchick 2015 - How</title>
+
+    {% include "IncludesTemplate.html" %}
+    <link rel='stylesheet' type='text/css' href='{% static "css/inverted.css" %}'>
+    <link rel='stylesheet' type='text/css' href='{% static "css/how.css" %}'>
+    <script type='text/javascript' src='{% static "js/how.js" %}'></script>
+
+</head>
+<body>
+
+    <div class="maze-wrapper">
+
+        <canvas width="1100" height="800" class="maze-canvas">
+            Sorry, looks like your browser doesn't support HTML5.
+            Try using Google Chrome if you want to see how Kevin's gonna get to the wedding.
+        </canvas>
+
+    </div>
+
+    {% include "FooterTemplate.html" %}
+
+</body>
+</html>
