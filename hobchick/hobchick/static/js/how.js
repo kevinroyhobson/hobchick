@@ -34,8 +34,6 @@ $(function() {
         boundarySet = constructBoundarySet();
     }, 50);
 
-
-
     setTimeout(function() {
         drawKev(currRectX, currRectY);
     }, 50);
@@ -44,7 +42,7 @@ $(function() {
 });
 
 function drawMaze() {
-    //makeWhite(0, 0, canvas.width, canvas.height);
+
     var mazeImg = new Image();
     mazeImg.onload = function () { // when the image is loaded, draw the image, the rectangle and the circle
         context.drawImage(mazeImg, 0, 0);
@@ -54,14 +52,11 @@ function drawMaze() {
 
 function drawKev(newX, newY) {
 
-    //makeWhite(currRectX, currRectY, kevWidth, kevHeight);
-
     kevImage = new Image();
     kevImage.onload = function() {
         context.drawImage(kevImage, newX, newY);
     };
     kevImage.src = "/static/img/how/kev-cartoon-small.png";
-
 }
 
 function makeWhite(x, y, w, h) {
