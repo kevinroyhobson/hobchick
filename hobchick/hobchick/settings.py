@@ -91,5 +91,6 @@ STATICFILES_FINDERS = (
 )
 
 TEMPLATE_DIRS = (
-    BASE_DIR + '/hobchick/templates'
+    BASE_DIR + '/hobchick/templates',
+    BASE_DIR + '/hobchick/templates/mobile'
 )

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html style="height:100%;">
+<head lang='en'>
+    <meta charset='UTF-8'>
+
+    <title>Hobchick 2015</title>
+
+    {% include "IncludesTemplate.html" %}
+    <link rel='stylesheet' type='text/css' href='{% static "css/mobile-main.css" %}'>
+
+</head>
+<body style="height:100%;">
+    <div class="mobile-main">
+        <div class="heading-1">
+            HOBCHICK
+        </div>
+    </div>
+
+    {% include "MobileFooterTemplate.html" %}
+
+</body>
+</html>
+
+<script type='text/javascript' src='{% static "js/mobileHome.js" %}'></script>

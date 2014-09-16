@@ -1,0 +1,37 @@
+.mobile-main {
+    background-color: black;
+    color:white;
+    font-family: 'Montserrat', sans-serif;
+    height: 100%;
+}
+
+.heading-1 {
+    font-size: 36px;
+    letter-spacing: 8px;
+}
+
+.mobile-footer {
+    position: absolute;
+    bottom: 0px;
+}
+
+.mobile-footer-links {
+    display: none;
+}
+
+.burger {
+    background-image: url(/static/img/mobile/white-burger.png);
+    width: 175px;
+    height: 175px;
+    background-size: contain;
+    left: -75px;
+    bottom: 10px;
+    position: absolute;
+}
+
+.mobile-footer-links {
+    background-color: black;
+    color:white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 70px;
+}

@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
+from hobchick.views.mobile.MobileHomeView import MobileHomeView
 from hobchick.views.WhereView import WhereView
 from hobchick.views.WhenView import WhenView
 from hobchick.views.HomeView import HomeView
@@ -20,4 +21,6 @@ urlpatterns = patterns('',
     url(r'^where/$', WhereView.as_view()),
     url(r'^why/$', WhyView.as_view()),
     url(r'^how/$', HowView.as_view()),
+
+    url(r'^m/$', MobileHomeView.as_view()),
 )

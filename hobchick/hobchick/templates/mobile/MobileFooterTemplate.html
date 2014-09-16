@@ -1,0 +1,17 @@
+<div class="mobile-footer">
+
+    <div class="burger">
+
+    </div>
+
+    <div class="mobile-footer-links">
+        {% for linkPair in footer.linkPairs %}
+
+            <div class="mobile-footer-link-pair">
+                <a class="mobile-footer-link left-link" href="{{linkPair.left.url}}">{{linkPair.left.display}}</a>
+                <a class="mobile-footer-link right-link" href="{{linkPair.right.url}}">{{linkPair.right.display}}</a>
+            </div>
+
+        {% endfor %}
+    </div>
+</div>
