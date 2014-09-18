@@ -1,17 +1,27 @@
 <div class="mobile-footer">
 
-    <div class="burger">
+    <div class="burger transitioning-menu">
 
     </div>
 
-    <div class="mobile-footer-links">
-        {% for linkPair in footer.linkPairs %}
+        <nav class="mobile-footer-menu transitioning-menu">
 
-            <div class="mobile-footer-link-pair">
-                <a class="mobile-footer-link left-link" href="{{linkPair.left.url}}">{{linkPair.left.display}}</a>
-                <a class="mobile-footer-link right-link" href="{{linkPair.right.url}}">{{linkPair.right.display}}</a>
+            <div class="mobile-footer-links-left">
+                {% for link in footer.leftLinks %}
+                    <div class="mobile-footer-link">
+                        <a href="{{link.url}}">{{link.display}}</a>
+                    </div>
+                {% endfor %}
             </div>
 
-        {% endfor %}
-    </div>
+            <div class="mobile-footer-links-right">
+                {% for link in footer.rightLinks %}
+                    <div class="mobile-footer-link">
+                        <a href="{{link.url}}">{{link.display}}</a>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </nav>
+
 </div>

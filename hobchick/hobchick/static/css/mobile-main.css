@@ -1,3 +1,8 @@
+body {
+    overflow-x: hidden;
+    overflow-y:hidden;
+}
+
 .mobile-main {
     background-color: black;
     color:white;
@@ -12,11 +17,40 @@
 
 .mobile-footer {
     position: absolute;
-    bottom: 0px;
+    width: 100%;
 }
 
-.mobile-footer-links {
-    display: none;
+nav.mobile-footer-menu {
+    background-color: black;
+    color:white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 70px;
+    letter-spacing: 10px;
+
+    padding-top: 5px;
+    border-top: 3px dotted white;
+
+    position: fixed;
+    z-index: 20;
+    overflow: hidden;
+
+    left: 0;
+    width: 100%;
+    height: 300px;
+
+    bottom: -300px;
+}
+
+.transitioning-menu {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+body.smb-open nav.mobile-footer-menu {
+    bottom:0;
 }
 
 .burger {
@@ -24,14 +58,36 @@
     width: 175px;
     height: 175px;
     background-size: contain;
-    left: -75px;
-    bottom: 10px;
+    left: -50px;
+    bottom: 60px;
     position: absolute;
+    z-index: 21;
 }
 
-.mobile-footer-links {
-    background-color: black;
-    color:white;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 70px;
+.burger-open {
+    left: -100px;
+}
+
+.mobile-footer-links-right {
+    float: right;
+    text-align: left;
+    width: 50%;
+    padding-left: 5%;
+}
+
+.mobile-footer-links-left {
+    float: left;
+    text-align: right;
+    width: 50%;
+    padding-right: 5%;
+}
+
+.mobile-footer-link a {
+    color: white;
+
+}
+
+a:hover {
+    text-decoration:none;
+    color: #d4b189; /* covered wagon */
 }

@@ -14,8 +14,11 @@ class NavigationFactory:
 
     def getMobileFooter(self):
 
-        linkPairs = [ {'left': {'display': 'WHO', 'url': '/m/who'}, 'right': {'display': 'WHAT', 'url': '/m/what'}},
-                      {'left': {'display': 'WHEN', 'url': '/m/when'}, 'right': {'display': 'WHERE', 'url': '/m/where'}},
-                      {'left': {'display': 'WHY', 'url': '/m/why'}, 'right': {'display': 'HOW', 'url': '/m/how'}} ]
+        links = {'leftLinks':  [{'display': 'WHO', 'url': '/m/who'},
+                                  {'display': 'WHEN', 'url': '/m/when'},
+                                  {'display': 'WHY', 'url': '/m/why'}],
+                 'rightLinks': [{'display': 'WHAT', 'url': '/m/what'},
+                                  {'display': 'WHERE', 'url': '/m/where'},
+                                  {'display': 'HOW', 'url': '/m/how'}]};
 
-        return {'linkPairs': linkPairs}
+        return links;
