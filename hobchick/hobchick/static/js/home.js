@@ -1,8 +1,8 @@
 $(function() {
     setTimeout(function() {
 
-        var marginLeft = $('.hobson-column').width() - $('.hob-name-start').width() - 25;
-        var marginRight = $('.sanchick-column').width() - $('.chick-name-start').width() - 25;
+        var marginLeft = $('.hobson-column').width() - $('.hob-name-start').width() - 10;
+        var marginRight = $('.sanchick-column').width() - $('.chick-name-start').width() - 10;
 
         $('.son-name-start').animate({opacity: '0'}, 1500);
         $('.san-name-start').animate({opacity: '0'}, 1500);
