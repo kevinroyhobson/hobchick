@@ -3,7 +3,7 @@ var maxScreenWidth;
 var maxScreenHeight;
 var padding = 20;
 var heightToWidthRatio = 7.0 / 5.0;
-var numTotalPics = 55;
+var numTotalPics = 163;
 
 $(function() {
 
