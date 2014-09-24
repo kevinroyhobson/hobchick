@@ -10,13 +10,18 @@ $(function() {
 
     onResize();
 
+    var delaysArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    delaysArray = shuffle(delaysArray);
+
+    var delayIndex = 0;
     _.each($('.screen'), function(screen) {
 
-        var delay = Math.floor(Math.random() * 10000)
+        var delay = Math.floor(delaysArray[delayIndex] * 1000)
         setTimeout(function() {
             changePicture(screen);
         }, delay);
 
+        delayIndex++;
     });
 
     $(window).resize(function () {
@@ -66,11 +71,13 @@ function changePicture(screen) {
 
     window.setTimeout(function() {
             changePicture(screen)
-        }, 8000);
+        }, 9500);
 }
 
 function getRandomPictureNumberNotCurrentlyVisible() {
+
     while (true) {
+
         var picNumber = Math.floor(Math.random() * numTotalPics);
         if (picsOnScreenSet[picNumber] == false) {
             return picNumber;
@@ -78,4 +85,23 @@ function getRandomPictureNumberNotCurrentlyVisible() {
             console.log('picture ' + picNumber + ' is already on the screen... trying again.');
         }
     }
+
+}
+
+function shuffle(array) {
+  var m = array.length, t, i;
+
+  // While there remain elements to shuffle…
+  while (m) {
+
+    // Pick a remaining element…
+    i = Math.floor(Math.random() * m--);
+
+    // And swap it with the current element.
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
+  }
+
+  return array;
 }
