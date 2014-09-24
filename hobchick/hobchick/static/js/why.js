@@ -4,6 +4,7 @@ var maxScreenHeight;
 var padding = 20;
 var heightToWidthRatio = 7.0 / 5.0;
 var numTotalPics = 163;
+var picsOnScreenSet;
 
 $(function() {
 
@@ -21,6 +22,11 @@ $(function() {
     $(window).resize(function () {
         onResize();
     });
+
+    picsOnScreenSet = {};
+    for (var i = 0; i < numTotalPics; i++) {
+        picsOnScreenSet[i] = false;
+    }
 
 });
 
@@ -40,8 +46,19 @@ function changePicture(screen) {
     $(screen).animate({'opacity':'0.0'}, 1000);
 
     window.setTimeout(function() {
-        var picNumber = Math.floor(Math.random() * numTotalPics);
-        var pathToPic = '/static/img/why/' + picNumber + '.jpg'
+
+        // Get a new random picture to show
+        var newPicNumber = getRandomPictureNumberNotCurrentlyVisible();
+
+        // Get the number of the current picture so we can mark it as no longer visible.
+        var oldPicNumber = Number($(screen).attr('pic-number'));
+        picsOnScreenSet[oldPicNumber] = false;
+
+        // Mark the new picture as visible and save its number to the element
+        picsOnScreenSet[newPicNumber] = true;
+        $(screen).attr('pic-number', newPicNumber);
+
+        var pathToPic = '/static/img/why/' + newPicNumber + '.jpg';
         $(screen).css('background-image', 'url(' + pathToPic + ')');
     }, 1000);
 
@@ -52,11 +69,13 @@ function changePicture(screen) {
         }, 8000);
 }
 
-function getRandomColor() {
-    var letters = '0123456789ABCDEF'.split('');
-    var color = '#';
-    for (var i = 0; i < 6; i++ ) {
-        color += letters[Math.floor(Math.random() * 16)];
+function getRandomPictureNumberNotCurrentlyVisible() {
+    while (true) {
+        var picNumber = Math.floor(Math.random() * numTotalPics);
+        if (picsOnScreenSet[picNumber] == false) {
+            return picNumber;
+        } else {
+            console.log('picture ' + picNumber + ' is already on the screen... trying again.');
+        }
     }
-    return color;
 }
