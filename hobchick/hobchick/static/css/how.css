@@ -2,9 +2,32 @@
     background-color: white;
     margin-left: auto;
     margin-right: auto;
+
+    width: 50%;
 }
 
 .maze-canvas {
     background: white;
 }
 
+.kevin-maze-instructions {
+    position: relative;
+
+    float:left;
+
+    font-size: 36px;
+
+    padding-top: 30px;
+    padding-left: 1%;
+
+    width: 20%;
+    height: 750px;
+
+    line-height: 120%;
+}
+
+.arrow-keys {
+    position: absolute;
+    bottom: 5px;
+    right: 0;
+}
