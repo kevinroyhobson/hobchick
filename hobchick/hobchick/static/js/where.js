@@ -1,6 +1,6 @@
 
 $(function() {
-    initializeMap();
+    //initializeMap();
     $('.footer').css('border-top', '1px dotted grey');
     onResize();
     $(window).resize(function() {
@@ -9,7 +9,7 @@ $(function() {
 });
 
 function onResize() {
-    var canvas = $('#map-canvas');
+    var canvas = $('.mapbox-map');
     var footerHeight = $('.footer').outerHeight();
     canvas.height($(window).height() - footerHeight);
 }
@@ -220,9 +220,9 @@ function initializeMap() {
         map: map
     });
 
-    //setTimeout(function() {
-        //zoomIn(map);
-    //}, 3500);
+    setTimeout(function() {
+        zoomIn(map);
+    }, 3500);
 
     makeFeaturesVisible(map);
 
@@ -236,7 +236,7 @@ function initializeMap() {
   }
 
   function zoomIn(map) {
-    var zoomSpeed = 300;
+    var zoomSpeed = 200;
 
     map.setZoom(map.getZoom() + 1);
 

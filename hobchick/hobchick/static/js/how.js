@@ -33,11 +33,12 @@ $(function() {
 
     drawMaze();
 
+
     setTimeout(function() {
         boundarySet = constructBoundarySet();
         drawKev();
         handleMovement();
-    }, 50);
+    }, 25);
 
     setUpKeyListeners();
 });
