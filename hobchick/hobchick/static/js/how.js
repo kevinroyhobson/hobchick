@@ -2,8 +2,8 @@
 var canvas;
 var context;
 
-var currRectX = 5;
-var currRectY = 565;
+var kevinXPosition = 5;
+var kevinYPosition = 565;
 
 var mazeWidth = 1091;
 var mazeHeight = 783;
@@ -13,6 +13,10 @@ var kevHeight = 51;
 
 var intervalVar;
 var kevImage;
+
+var currentXSpeed = 0;
+var currentYSpeed = 0;
+var speedConstant = 6;
 
 var boundarySet;
 
@@ -29,17 +33,76 @@ $(function() {
 
     drawMaze();
 
-    // Construct a set of all the black pixels. We'll use it later for boundary checking.
     setTimeout(function() {
         boundarySet = constructBoundarySet();
+        drawKev();
+        handleMovement();
     }, 50);
+
+    setUpKeyListeners();
+});
+
+function setUpKeyListeners(){
+    var listener = new window.keypress.Listener();
+
+    listener.register_combo({
+        "keys" : "up",
+        "on_keydown" : function() {
+            currentYSpeed = -1 * speedConstant;
+        },
+        "on_keyup" : function() {
+            currentYSpeed = 0;
+        }
+    });
+
+    listener.register_combo({
+        "keys" : "down",
+        "on_keydown" : function() {
+            currentYSpeed = speedConstant;
+        },
+        "on_keyup" : function() {
+            currentYSpeed = 0;
+        }
+    });
+
+    listener.register_combo({
+        "keys" : "left",
+        "on_keydown" : function() {
+            currentXSpeed = -1 * speedConstant;
+        },
+        "on_keyup" : function() {
+            currentXSpeed = 0;
+        }
+    });
+
+    listener.register_combo({
+        "keys" : "right",
+        "on_keydown" : function() {
+            currentXSpeed = speedConstant;
+        },
+        "on_keyup" : function() {
+            currentXSpeed = 0;
+        }
+    });
+
+}
+
+function handleMovement() {
+    var potentialX = kevinXPosition + currentXSpeed;
+    var potentialY = kevinYPosition + currentYSpeed;
+
+    if (currentXSpeed != 0 && canMoveTo(potentialX, kevinYPosition)) {
+        kevinXPosition = potentialX;
+    }
+
+    if (currentYSpeed != 0 && canMoveTo(kevinXPosition, potentialY)) {
+        kevinYPosition = potentialY;
+    }
 
     setTimeout(function() {
-        drawKev(currRectX, currRectY);
+        handleMovement();
     }, 50);
-
-    window.addEventListener("keydown", moveKev, true);
-});
+}
 
 function drawMaze() {
 
@@ -50,13 +113,19 @@ function drawMaze() {
     mazeImg.src = "/static/img/how/maze-1.jpg";
 }
 
-function drawKev(newX, newY) {
+function drawKev() {
+
+    drawMaze();
 
     kevImage = new Image();
     kevImage.onload = function() {
-        context.drawImage(kevImage, newX, newY);
+        context.drawImage(kevImage, kevinXPosition, kevinYPosition);
     };
     kevImage.src = "/static/img/how/kev-cartoon-small.png";
+
+    setTimeout(function() {
+        drawKev();
+    }, 50);
 }
 
 function makeWhite(x, y, w, h) {
@@ -85,67 +154,18 @@ function constructBoundarySet() {
     return boundarySet;
 }
 
-function moveKev(e) {
-    var newX;
-    var newY;
-    var canMove;
-    e = e || window.event;
-    switch (e.keyCode) {
-        case 38:   // arrow up key
-        case 87: // W key
-            newX = currRectX;
-            newY = currRectY - 3;
-            break;
-        case 37: // arrow left key
-        case 65: // A key
-            newX = currRectX - 3;
-            newY = currRectY;
-            break;
-        case 40: // arrow down key
-        case 83: // S key
-            newX = currRectX;
-            newY = currRectY + 3;
-            break;
-        case 39: // arrow right key
-        case 68: // D key
-            newX = currRectX + 3;
-            newY = currRectY;
-            break;
-    }
-    movingAllowed = canMoveTo(newX, newY);
-    if (movingAllowed === 1) {      // 1 means kev can move
-        drawMaze();
-        drawKev(newX, newY);
-        currRectX = newX;
-        currRectY = newY;
-    }
-    else if (movingAllowed === 2) { // 2 means kev reached the end
-        clearInterval(intervalVar); // we'll set the timer later in this article
-        makeWhite(0, 0, canvas.width, canvas.height);
-        context.font = "40px Arial";
-        context.fillStyle = "blue";
-        context.textAlign = "center";
-        context.textBaseline = "middle";
-        context.fillText("Congratulations!", canvas.width / 2, canvas.height / 2);
-        window.removeEventListener("keydown", moveRect, true);
-    }
-    else {
-        console.log("can't move, that's a wall.");
-    }
-}
-
-function canMoveTo(destX, destY) {
+function canMoveTo(x, y) {
     var canMove = 1; // 1 means: the rectangle can move
 
-    var topToCheck = destY + Math.floor(kevHeight/4);
+    var topToCheck = y + Math.floor(kevHeight/4);
     var bottomToCheck = topToCheck + Math.floor(kevHeight/2);
-    var leftToCheck = destX + Math.floor(kevWidth/4);
+    var leftToCheck = x + Math.floor(kevWidth/4);
     var rightToCheck = leftToCheck + Math.floor(kevWidth/2);
 
     // Debug: so you can see the space we're comparing against the boundary
     //makeWhite(leftToCheck, topToCheck, Math.floor(kevWidth/2), Math.floor(kevHeight/2));
 
-    if (destX >= 0 && destX <= mazeWidth - kevWidth/2 && destY >= 0 && destY <= mazeHeight - kevHeight/2) { // check whether the rectangle would move inside the bounds of the canvas
+    if (x >= 0 && x <= mazeWidth - kevWidth/2 && y >= 0 && y <= mazeHeight - kevHeight/2) { // check whether the rectangle would move inside the bounds of the canvas
         for (var xToCheck = leftToCheck; xToCheck < rightToCheck; xToCheck++) {
             for (var yToCheck = topToCheck; yToCheck < bottomToCheck; yToCheck++) {
 
