@@ -3,8 +3,11 @@ var canvas;
 var context;
 var canvasScaleFactor;
 
-var kevinXPosition = 0; // 5;
-var kevinYPosition = 0; //565;
+var defaultKevinXPosition = 0; // todo: when I set this to (5, 565), like I want to, everything breaks and I can walk through walls. Weird.
+var defaultKevinYPosition = 0;
+
+var kevinXPosition;
+var kevinYPosition;
 
 var mazeWidth; // = 1091;
 var mazeHeight; // = 783;
@@ -23,6 +26,8 @@ var currentYSpeed = 0;
 var speedConstant = 6;
 
 var boundarySet;
+
+var debugMode = true;
 
 $(function() {
 
@@ -43,6 +48,9 @@ $(function() {
     kevWidth = defaultKevWidth * canvasScaleFactor;
     kevHeight = defaultKevHeight * canvasScaleFactor;
 
+    kevinXPosition = defaultKevinXPosition * canvasScaleFactor;
+    kevinYPosition = defaultKevinYPosition * canvasScaleFactor;
+
     mazeWrapper.css('margin-top', ($(window).height() - mazeHeight - footer.outerHeight()) / 2);
 
     canvas.width = mazeWidth;
@@ -52,7 +60,7 @@ $(function() {
         boundarySet = constructBoundarySet();
         drawKev();
         handleMovement();
-    }, 25);
+    }, 100);
 
     setUpKeyListeners();
 });
@@ -130,7 +138,9 @@ function drawMaze() {
 
 function drawKev() {
 
-    //drawMaze();
+    if (!debugMode) {
+        drawMaze();
+    }
 
     kevImage = new Image();
     kevImage.onload = function() {
@@ -172,7 +182,9 @@ function constructBoundarySet() {
             var x = index - (y * mazeWidth);
 
             boundarySet[x + ',' + y] = true;
-            makeGreen(x, y, 1, 1);
+            if (debugMode) {
+                makeGreen(x, y, 1, 1);
+            }
         }
     }
     return boundarySet;
