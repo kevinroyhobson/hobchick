@@ -1,0 +1,66 @@
+
+.card-holder {
+
+
+    width: 80%;
+
+    margin: auto;
+
+    padding-top: 5%;
+    padding-bottom:5%;
+
+}
+
+
+
+.baseball-card {
+
+    width: 30%;
+    border-radius: 20px;
+
+    position: relative;
+
+
+
+
+}
+
+.baseball-card-name {
+    position:absolute;
+
+    bottom: 0px;
+
+    font-size: 30px;
+    letter-spacing:1px;
+}
+
+.kevin-card {
+
+    float: left;
+
+    background-color: lightsalmon;
+
+}
+
+.danielle-card {
+
+    float: right;
+
+    background-color: cornflowerblue;
+
+}
+
+.kevin-card-name {
+    left: 10px;
+}
+
+.danielle-card-name {
+    right: 10px;
+}
+
+.card-seperator {
+
+    float: right;
+
+    width: 20%;
+}
