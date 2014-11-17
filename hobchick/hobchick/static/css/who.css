@@ -79,6 +79,10 @@
     letter-spacing:1px;
 }
 
+.kevin-flip-container {
+    float: left;
+}
+
 .kevin-front {
 
     background-color: lightsalmon;
@@ -89,6 +93,10 @@
 
     background-color: red;
 
+}
+
+.danielle-flip-container {
+    margin-left: 65%;
 }
 
 .danielle-front {
