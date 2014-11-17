@@ -91,12 +91,14 @@
 
 }
 
-.danielle-card {
-
-    float: right;
+.danielle-front {
 
     background-color: cornflowerblue;
 
+}
+
+.danielle-back {
+    background-color: blue;
 }
 
 .kevin-card-name {
