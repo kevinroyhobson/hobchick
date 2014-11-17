@@ -2,10 +2,22 @@
 $(function() {
 
     var theCards = $('.baseball-card');
-    var cardWidth = $(theCards[0]).width();
 
-    _.each(theCards, function(card) {
-        $(card).height(cardWidth * 1.6);
-    });
+    var windowWidth = $(window).width();
+    var cardWidth = windowWidth * 0.25;
+
+    $('.flip-container').width(cardWidth);
+    $('.flipper').width(cardWidth);
+    $('.front').width(cardWidth);
+    $('.back').width(cardWidth);
+
+
+
+    $('.flip-container').height(cardWidth * 1.6);
+    $('.flipper').height(cardWidth * 1.6);
+    $('.front').height(cardWidth *1.6);
+    $('.back').height(cardWidth *1.6);
+
+
 
 });

@@ -2,28 +2,73 @@
 .card-holder {
 
 
-    width: 80%;
+    width: 75%;
 
     margin: auto;
 
-    padding-top: 5%;
+    padding-top: 2%;
     padding-bottom:5%;
+
+    position: relative;
 
 }
 
+.flip-container .flipper .front {
+}
 
+/*
 
 .baseball-card {
 
     width: 30%;
     border-radius: 20px;
 
-    position: relative;
-
-
-
 
 }
+
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000;
+}
+	/* flip the pane when hovered */
+	.flip-container:hover .flipper, .flip-container.hover .flipper {
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+	width: 320px;
+	height: 480px;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 1.0s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}
+
 
 .baseball-card-name {
     position:absolute;
@@ -34,11 +79,15 @@
     letter-spacing:1px;
 }
 
-.kevin-card {
-
-    float: left;
+.kevin-front {
 
     background-color: lightsalmon;
+
+}
+
+.kevin-back {
+
+    background-color: red;
 
 }
 
@@ -56,11 +105,4 @@
 
 .danielle-card-name {
     right: 10px;
-}
-
-.card-seperator {
-
-    float: right;
-
-    width: 20%;
 }
