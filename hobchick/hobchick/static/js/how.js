@@ -27,7 +27,7 @@ var speedConstant = 6;
 
 var boundarySet;
 
-var debugMode = true;
+var debugMode = false;
 
 $(function() {
 
@@ -199,8 +199,10 @@ function canMoveTo(x, y) {
     var rightToCheck = leftToCheck + Math.floor(kevWidth/2);
 
     // Debug: so you can see the space we're comparing against the boundary
-    makeWhite(leftToCheck, topToCheck, Math.floor(kevWidth/2), Math.floor(kevHeight/2));
-
+    if (debugMode == true)
+    {
+        makeWhite(leftToCheck, topToCheck, Math.floor(kevWidth/2), Math.floor(kevHeight/2));
+    }
     if (x >= 0 && x <= mazeWidth - kevWidth/2 && y >= 0 && y <= mazeHeight - kevHeight/2) { // check whether the rectangle would move inside the bounds of the canvas
         for (var xToCheck = leftToCheck; xToCheck < rightToCheck; xToCheck++) {
             for (var yToCheck = topToCheck; yToCheck < bottomToCheck; yToCheck++) {
