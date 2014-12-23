@@ -7,6 +7,7 @@ from hobchick.views.WhenView import WhenView
 from hobchick.views.HomeView import HomeView
 from hobchick.views.WhyView import WhyView
 from hobchick.views.HowView import HowView
+from hobchick.views.WhoView import WhoView
 
 admin.autodiscover()
 
@@ -21,6 +22,7 @@ urlpatterns = patterns('',
     url(r'^where/$', WhereView.as_view()),
     url(r'^why/$', WhyView.as_view()),
     url(r'^how/$', HowView.as_view()),
+    url(r'^who/$', WhoView.as_view()),
 
     url(r'^m/$', MobileHomeView.as_view()),
 )
