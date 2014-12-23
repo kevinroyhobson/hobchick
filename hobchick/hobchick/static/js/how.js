@@ -27,11 +27,31 @@ var speedConstant = 6;
 
 var boundarySet;
 
+var kevinModeActive = false;
+var danielleModeActive = false;
+
 var debugMode = false;
 
 $(function() {
 
     $('.kevin-maze-instructions').click(function() {
+
+        kevinModeActive = true;
+        danielleModeActive = false;
+
+        initKevinMaze();
+
+        setTimeout(function() {
+            boundarySet = constructBoundarySet();
+        }, 100);
+
+    });
+
+    $('.danielle-maze-instructions').click(function() {
+
+        kevinModeActive = false;
+        danielleModeActive = true;
+
         initKevinMaze();
 
         setTimeout(function() {
@@ -73,6 +93,10 @@ function initKevinMaze() {
     canvas.width = mazeWidth;
     canvas.height = mazeHeight;
 
+}
+
+function initDanielleMaze() {
+    initKevinMaze();
 }
 
 function setUpKeyListeners(){
@@ -148,15 +172,19 @@ function drawMaze() {
 
 function drawKev() {
 
-    if (!debugMode) {
-        drawMaze();
-    }
+    if (kevinModeActive || danielleModeActive) {
 
-    kevImage = new Image();
-    kevImage.onload = function() {
-        context.drawImage(kevImage, kevinXPosition, kevinYPosition, kevWidth, kevHeight);
-    };
-    kevImage.src = "/static/img/how/kev-cartoon-small.png";
+        if (!debugMode) {
+            drawMaze();
+        }
+
+        kevImage = new Image();
+        kevImage.onload = function() {
+            context.drawImage(kevImage, kevinXPosition, kevinYPosition, kevWidth, kevHeight);
+        };
+        kevImage.src = "/static/img/how/kev-cartoon-small.png";
+
+    }
 
     setTimeout(function() {
         drawKev();

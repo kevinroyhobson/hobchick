@@ -5,28 +5,41 @@
 
     width: 60%;
     height: 85%;
+
 }
 
 .maze-canvas {
     background: white;
 }
 
-.kevin-maze-instructions {
-    position: relative;
+.maze-instructions {
 
-    float:left;
-
+    line-height: 120%;
     font-size: 36px;
+
+    cursor: pointer;
 
     padding-top: 30px;
     padding-left: 1%;
-
     width: 20%;
+}
+
+.kevin-maze-instructions {
+
+    position: relative;
+
+    float:left;
     height: 750px;
 
-    line-height: 120%;
+}
 
-    cursor: pointer;
+.danielle-maze-instructions {
+    position: absolute;
+
+    top: 0;
+    right: 1%;
+
+    text-align: right;
 }
 
 .arrow-keys {
