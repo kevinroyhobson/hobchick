@@ -31,6 +31,23 @@ var debugMode = false;
 
 $(function() {
 
+    $('.kevin-maze-instructions').click(function() {
+        initKevinMaze();
+
+        setTimeout(function() {
+            boundarySet = constructBoundarySet();
+        }, 100);
+
+    });
+
+    drawKev();
+    handleMovement();
+
+    setUpKeyListeners();
+});
+
+function initKevinMaze() {
+
     // center the maze
     var mazeWrapper = $('.maze-wrapper');
     var footer = $('.footer');
@@ -56,14 +73,7 @@ $(function() {
     canvas.width = mazeWidth;
     canvas.height = mazeHeight;
 
-    setTimeout(function() {
-        boundarySet = constructBoundarySet();
-        drawKev();
-        handleMovement();
-    }, 100);
-
-    setUpKeyListeners();
-});
+}
 
 function setUpKeyListeners(){
     var listener = new window.keypress.Listener();

@@ -25,6 +25,8 @@
     height: 750px;
 
     line-height: 120%;
+
+    cursor: pointer;
 }
 
 .arrow-keys {
