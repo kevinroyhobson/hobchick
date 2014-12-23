@@ -6,12 +6,19 @@ var heightToWidthRatio = 7.0 / 5.0;
 var numTotalPics = 356;
 var picsOnScreenSet;
 
+// We cache an image one screen transition before it is supposed to be displayed. This way we never see a loading delay during fade-in.
+var cachedImageNumber = 0;
+var cachedImage;
+
 $(function() {
 
     onResize();
 
     var delaysArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     delaysArray = shuffle(delaysArray);
+
+    // Set up the first picture to be cached.
+    cachedImageNumber = getRandomPictureNumberNotCurrentlyVisible();
 
     var delayIndex = 0;
     _.each($('.screen'), function(screen) {
@@ -52,19 +59,19 @@ function changePicture(screen) {
 
     window.setTimeout(function() {
 
-        // Get a new random picture to show
-        var newPicNumber = getRandomPictureNumberNotCurrentlyVisible();
-
         // Get the number of the current picture so we can mark it as no longer visible.
         var oldPicNumber = Number($(screen).attr('pic-number'));
         picsOnScreenSet[oldPicNumber] = false;
 
-        // Mark the new picture as visible and save its number to the element
-        picsOnScreenSet[newPicNumber] = true;
-        $(screen).attr('pic-number', newPicNumber);
-
-        var pathToPic = '/static/img/why/' + newPicNumber + '.jpg';
+        // Grab the cached image and throw it in this screen.
+        var pathToPic = '/static/img/why/' + cachedImageNumber + '.jpg';
         $(screen).css('background-image', 'url(' + pathToPic + ')');
+        $(screen).attr('pic-number', cachedImageNumber);
+
+        // Cache a new picture.
+        var newPicNumber = getRandomPictureNumberNotCurrentlyVisible();
+        cacheImage(newPicNumber);
+
     }, 1000);
 
     $(screen).animate({'opacity':'1.0'}, 1000);
@@ -72,6 +79,16 @@ function changePicture(screen) {
     window.setTimeout(function() {
             changePicture(screen)
         }, 9500);
+}
+
+function cacheImage(pictureNumber) {
+  console.log('precaching image' + pictureNumber);
+  
+  cachedImage = new Image();
+  cachedImage.src = '/static/img/why/' + pictureNumber + '.jpg';
+  cachedImageNumber = pictureNumber;
+
+  picsOnScreenSet[pictureNumber] = true;
 }
 
 function getRandomPictureNumberNotCurrentlyVisible() {
