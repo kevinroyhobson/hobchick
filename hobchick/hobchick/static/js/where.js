@@ -99,17 +99,20 @@ function initializeMap() {
 
     setTimeout(function() {
         movePlanesRecursively();
-    }, 400);
+    }, 750);
 }
 
 function initializePlane(plane) {
-    plane.marker = L.marker(plane.startingLocation, {
-        icon: L.mapbox.marker.icon({
+    plane.marker = L.rotatedMarker(plane.startingLocation, {
+        icon: L.icon({
           iconUrl: 'https://www.mapbox.com/maki/renders/airport-24@2x.png',
-          iconSize: [24, 24],
+          iconSize: [48, 48],
         })
     });
     plane.marker.addTo(_map);
+
+    // Set the initial angle properly by moving it one step
+    movePlane(plane);
 }
 
 
@@ -134,6 +137,9 @@ function movePlanesRecursively() {
 
 function movePlane(plane) {
     var newLatLng = computeNewLatLngForPlane(plane);
+    var newPlaneAngle = computeNewAngleForPlane(plane, newLatLng);
+
+    plane.marker.options.angle = newPlaneAngle;
     plane.marker.setLatLng(newLatLng);
 }
 
@@ -147,5 +153,18 @@ function computeNewLatLngForPlane(plane) {
                     plane.marker.getLatLng().lng + longitudeStep);
 }
 
+function computeNewAngleForPlane(plane, newLatLng) {
 
+    var xDelta = newLatLng.lng - plane.marker.getLatLng().lng;
+    var yDelta = newLatLng.lat - plane.marker.getLatLng().lat;
 
+    var angleInRadians = Math.atan2(yDelta, xDelta);
+    var angleInDegrees = angleInRadians * 180 / Math.PI;
+
+    // Correction for the stupid way the rotated marker works.
+    angleInDegrees = 450 - angleInDegrees;
+
+    console.log('xDelta = ' + xDelta + ', yDelta = ' + yDelta + ', angle = ' + angleInDegrees);
+
+    return angleInDegrees;
+}
