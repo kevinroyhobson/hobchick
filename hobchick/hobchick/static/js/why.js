@@ -12,6 +12,11 @@ var cachedImage;
 
 $(function() {
 
+    picsOnScreenSet = {};
+    for (var i = 0; i < numTotalPics; i++) {
+        picsOnScreenSet[i] = false;
+    }
+
     onResize();
 
     var delaysArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
@@ -19,6 +24,7 @@ $(function() {
 
     // Set up the first picture to be cached.
     cachedImageNumber = getRandomPictureNumberNotCurrentlyVisible();
+    cacheImage(cachedImageNumber);
 
     var delayIndex = 0;
     _.each($('.screen'), function(screen) {
@@ -34,11 +40,6 @@ $(function() {
     $(window).resize(function () {
         onResize();
     });
-
-    picsOnScreenSet = {};
-    for (var i = 0; i < numTotalPics; i++) {
-        picsOnScreenSet[i] = false;
-    }
 
 });
 
@@ -67,6 +68,7 @@ function changePicture(screen) {
         var pathToPic = '/static/img/why/' + cachedImageNumber + '.jpg';
         $(screen).css('background-image', 'url(' + pathToPic + ')');
         $(screen).attr('pic-number', cachedImageNumber);
+        //console.log('showing picture' + cachedImageNumber);
 
         // Cache a new picture.
         var newPicNumber = getRandomPictureNumberNotCurrentlyVisible();
@@ -82,7 +84,7 @@ function changePicture(screen) {
 }
 
 function cacheImage(pictureNumber) {
-  console.log('precaching image' + pictureNumber);
+  //console.log('precaching image' + pictureNumber);
   
   cachedImage = new Image();
   cachedImage.src = '/static/img/why/' + pictureNumber + '.jpg';
