@@ -4,8 +4,6 @@ body {
 }
 
 .mobile-main {
-    background-color: black;
-    color:white;
     font-family: 'Montserrat', sans-serif;
     height: 100%;
 }
@@ -21,14 +19,11 @@ body {
 }
 
 nav.mobile-footer-menu {
-    background-color: black;
-    color:white;
     font-family: 'Montserrat', sans-serif;
     font-size: 70px;
     letter-spacing: 10px;
 
     padding-top: 5px;
-    border-top: 3px dotted white;
 
     position: fixed;
     z-index: 20;
@@ -54,7 +49,6 @@ body.smb-open nav.mobile-footer-menu {
 }
 
 .burger {
-    background-image: url(/static/img/mobile/white-burger.png);
     width: 175px;
     height: 175px;
     background-size: contain;
@@ -82,12 +76,13 @@ body.smb-open nav.mobile-footer-menu {
     padding-right: 5%;
 }
 
-.mobile-footer-link a {
-    color: white;
-
-}
-
 a:hover {
     text-decoration:none;
     color: #d4b189; /* covered wagon */
+}
+
+.mobile-container {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
 }

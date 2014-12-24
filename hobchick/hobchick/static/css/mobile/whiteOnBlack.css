@@ -1,0 +1,20 @@
+
+.mobile-main {
+    background-color: black;
+    color:white;
+}
+
+.burger {
+    background-image: url(/static/img/mobile/white-burger.png);
+}
+
+nav.mobile-footer-menu {
+    background-color: black;
+    color:white;
+
+    border-top: 3px dotted white;
+}
+
+.mobile-footer-link a {
+    color: white;
+}
