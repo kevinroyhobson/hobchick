@@ -67,6 +67,8 @@ var _secondsToWaitBeforePlanesMove = 0.75;
 var _startDisappearingAtStepNumber = 450;
 var _planesAreVisible = true;
 
+var _secondsUntilZoom = 5.5;
+
 var _map;
 
 $(function() {
@@ -97,6 +99,10 @@ function initializeMap() {
     setTimeout(function() {
         movePlanesRecursively();
     }, _secondsToWaitBeforePlanesMove * 1000);
+
+    setTimeout(function() {
+        centerAndZoom();
+    }, _secondsUntilZoom * 1000);
 }
 
 function initializePlane(plane) {
@@ -180,4 +186,20 @@ function fadePlanes() {
             _planesAreVisible = false;
         }
     });
+}
+
+function centerAndZoom() {
+    var shouldKeepZooming = true;
+    var newZoomLevel = _map.getZoom() + 1;
+    _map.setZoom(newZoomLevel);
+
+    if (newZoomLevel >= 12) {
+        shouldKeepZooming = false;
+    }
+
+    if (shouldKeepZooming) {
+        setTimeout(function() {
+            centerAndZoom();
+        }, 15);
+    }
 }
