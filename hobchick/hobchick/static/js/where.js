@@ -13,49 +13,41 @@ var _pitLocation = L.latLng(40.496179, -80.241419);
 
 var newYorkPlane = {
     "startingLocation": _lgaLocation,
-    "numTotalSteps": 400,
     "latitudeJitterCoefficient": 30000
 };
 
 var cincinnatiPlane = {
     "startingLocation": _cvgLocation,
-    "numTotalSteps": 400,
     "latitudeJitterCoefficient": -20000
 };
 
 var columbusPlane = {
     "startingLocation": _cmhLocation,
-    "numTotalSteps": 400,
     "latitudeJitterCoefficient": 50000
 };
 
 var bostonPlane = {
     "startingLocation": _bosLocation,
-    "numTotalSteps": 400,
     "latitudeJitterCoefficient": 30000
 }
 
 var hartfordPlane = {
     "startingLocation": _bdlLocation,
-    "numTotalSteps": 400,
     "latitudeJitterCoefficient": -30000
 }
 
 var louisvillePlane = {
     "startingLocation": _sdfLocation,
-    "numTotalSteps": 400,
     "latitudeJitterCoefficient": 30000
 }
 
 var chicagoPlane = {
     "startingLocation": _ordLocation,
-    "numTotalSteps": 400,
     "latitudeJitterCoefficient": 30000
 }
 
 var washingtonPlane = {
     "startingLocation": _iadLocation,
-    "numTotalSteps": 400,
     "latitudeJitterCoefficient": 30000
 }
 
@@ -68,7 +60,12 @@ var _planes = [ newYorkPlane,
                 chicagoPlane,
                 washingtonPlane];
 
-var _maxPlaneSteps = 1000;
+var _totalPlaneSteps = 500;
+var _planeAnimationSeconds = 4.0;
+var _secondsToWaitBeforePlanesMove = 0.75;
+
+var _startDisappearingAtStepNumber = 450;
+var _planesAreVisible = true;
 
 var _map;
 
@@ -99,7 +96,7 @@ function initializeMap() {
 
     setTimeout(function() {
         movePlanesRecursively();
-    }, 750);
+    }, _secondsToWaitBeforePlanesMove * 1000);
 }
 
 function initializePlane(plane) {
@@ -121,17 +118,22 @@ var _numCurrentPlaneSteps = 0;
 function movePlanesRecursively() {
 
     _.each(_planes, function(plane) {
-        if (_numCurrentPlaneSteps < plane.numTotalSteps) {
+        if (_numCurrentPlaneSteps < _totalPlaneSteps) {
             movePlane(plane);
         }
     });
 
     _numCurrentPlaneSteps++;
 
-    if (_numCurrentPlaneSteps < _maxPlaneSteps) {
+    var timeTillNextMovement = _planeAnimationSeconds * 1000 / _totalPlaneSteps;
+    if (_numCurrentPlaneSteps < _totalPlaneSteps) {
         setTimeout(function() {
             movePlanesRecursively();
-        }, 10);
+        }, timeTillNextMovement);
+    }
+
+    if (_numCurrentPlaneSteps >= _startDisappearingAtStepNumber && _planesAreVisible) {
+        fadePlanes();
     }
 }
 
@@ -144,10 +146,10 @@ function movePlane(plane) {
 }
 
 function computeNewLatLngForPlane(plane) {
-    var latitudeStep = (_fallingWaterLocation.lat - plane.startingLocation.lat) / plane.numTotalSteps;
-    var longitudeStep = (_fallingWaterLocation.lng - plane.startingLocation.lng) / plane.numTotalSteps;
+    var latitudeStep = (_fallingWaterLocation.lat - plane.startingLocation.lat) / _totalPlaneSteps;
+    var longitudeStep = (_fallingWaterLocation.lng - plane.startingLocation.lng) / _totalPlaneSteps;
 
-    var latitudeJitterForCurve = ((plane.numTotalSteps / 2.0) - _numCurrentPlaneSteps) / plane.latitudeJitterCoefficient;
+    var latitudeJitterForCurve = ((_totalPlaneSteps / 2.0) - _numCurrentPlaneSteps) / plane.latitudeJitterCoefficient;
 
     return L.latLng(plane.marker.getLatLng().lat + latitudeStep + latitudeJitterForCurve,
                     plane.marker.getLatLng().lng + longitudeStep);
@@ -164,7 +166,18 @@ function computeNewAngleForPlane(plane, newLatLng) {
     // Correction for the stupid way the rotated marker works.
     angleInDegrees = 450 - angleInDegrees;
 
-    console.log('xDelta = ' + xDelta + ', yDelta = ' + yDelta + ', angle = ' + angleInDegrees);
+    //console.log('xDelta = ' + xDelta + ', yDelta = ' + yDelta + ', angle = ' + angleInDegrees);
 
     return angleInDegrees;
+}
+
+function fadePlanes() {
+    _.each(_planes, function(plane) {
+        var newOpacity = plane.marker.options.opacity - .02;
+        plane.marker.setOpacity(newOpacity);
+
+        if (newOpacity <= 0.0) {
+            _planesAreVisible = false;
+        }
+    });
 }
