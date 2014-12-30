@@ -153,11 +153,12 @@ function movePlanesRecursively() {
 
     if (_numCurrentPlaneSteps == _stepsUntilZoom) {
         centerAndZoom();
-        //fitBoundsToPointsOfInterest();
     }
 
     if (_numCurrentPlaneSteps == _stepsToPopMarkers) {
-        addFallingwaterPointsOfInterest();
+        setTimeout(function() {
+            addFallingwaterPointsOfInterest();
+        }, 250);
     }
 }
 
@@ -219,14 +220,15 @@ function centerAndZoom() {
             centerAndZoom();
         }, 15);
     }
-    else {
-        fitBoundsToPointsOfInterest();
-    }
 }
+
+var _fallingwaterPoi;
+var _barnPoi;
+var _sevenSpringsPoi;
 
 function addFallingwaterPointsOfInterest() {
 
-    L.mapbox.featureLayer({
+    _fallingwaterPoi = L.mapbox.featureLayer({
         type: 'Feature',
         geometry: {
             type: 'Point',
@@ -242,10 +244,10 @@ function addFallingwaterPointsOfInterest() {
             'marker-color': '#222222',
             'marker-symbol': 'star'
         }
-    })
-    .addTo(_map);
+    });
+    _fallingwaterPoi.addTo(_map);
 
-    L.mapbox.featureLayer({
+    var barnPoi = L.mapbox.featureLayer({
         type: 'Feature',
         geometry: {
             type: 'Point',
@@ -261,10 +263,10 @@ function addFallingwaterPointsOfInterest() {
             'marker-color': '#222222',
             'marker-symbol': 'farm'
         }
-    })
-    .addTo(_map);
+    });
+    barnPoi.addTo(_map);
 
-    L.mapbox.featureLayer({
+    _sevenSpringsPoi = L.mapbox.featureLayer({
         type: 'Feature',
         geometry: {
             type: 'Point',
@@ -280,20 +282,10 @@ function addFallingwaterPointsOfInterest() {
             'marker-color': '#222222',
             'marker-symbol': 'lodging'
         }
-    })
-    .addTo(_map);
-}
+    });
+    _sevenSpringsPoi.addTo(_map);
 
-function fitBoundsToPointsOfInterest() {
-    var bounds = L.latLngBounds([_fallingwaterLocation, _sevenSpringsLocation]);
-    bounds = bounds.pad(0.5);
-
-    fitOptions = {
-        'animate':true,
-        'maxZoom':12,
-        'minZoom':12
-    }
-
-    _map.fitBounds(bounds, fitOptions);
-    _map.panTo(_centerOfMap);
+    setTimeout(function() {
+        _fallingwaterPoi.openPopup();
+    }, 2000);
 }
