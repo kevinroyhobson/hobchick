@@ -1,0 +1,30 @@
+
+.what-main {
+    width: 1000px;
+    margin: auto;
+
+    font-family: 'Montserrat', sans-serif;
+
+    padding-top: 5%;
+}
+
+.what-item {
+    padding-top: 40px;
+}
+
+.what-name {
+    width: 45%;
+    margin-right: 5%;
+    float: left;
+
+    font-size: 36px;
+    text-align: right;
+}
+
+.what-description {
+    width: 45%;
+    margin-left: 5%;
+    float: right;
+
+    font-size: 24px;
+}
