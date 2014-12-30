@@ -82,7 +82,19 @@ a:hover {
 }
 
 .mobile-container {
-    padding-left: 3%;
-    padding-right: 3%;
+    padding-left: 2%;
+    padding-right: 2%;
     padding-top: 20px;;
+}
+
+.mobile-title {
+    font-size: 56px;
+    margin-bottom: -5px;
+    padding-top: 8px;
+}
+
+.mobile-description {
+    font-size: 36px;
+    padding-bottom: 20px;
+    padding-left: 35px;
 }
