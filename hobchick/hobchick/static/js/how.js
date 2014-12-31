@@ -3,8 +3,11 @@ var canvas;
 var context;
 var canvasScaleFactor;
 
-var defaultKevinXPosition = 65;
-var defaultKevinYPosition = 665;
+var defaultOhioXPosition = 65;
+var defaultOhioYPosition = 665;
+
+var defaultNewYorkXPosition = 780;
+var defaultNewYorkYPosition = 640;
 
 var kevinXPosition;
 var kevinYPosition;
@@ -89,7 +92,7 @@ function initKevinMaze() {
     canvas = $('.maze-canvas')[0];
     context = canvas.getContext("2d");
 
-    drawMaze();
+    drawOhioMaze();
 
     mazeHeight = $('.maze-wrapper').height();
     mazeWidth = Math.round(mazeHeight / 1.093495935);
@@ -99,8 +102,8 @@ function initKevinMaze() {
     kevWidth = defaultKevWidth * canvasScaleFactor;
     kevHeight = defaultKevHeight * canvasScaleFactor;
 
-    kevinXPosition = Math.round(defaultKevinXPosition * canvasScaleFactor);
-    kevinYPosition = Math.round(defaultKevinYPosition * canvasScaleFactor);
+    kevinXPosition = Math.round(defaultOhioXPosition * canvasScaleFactor);
+    kevinYPosition = Math.round(defaultOhioYPosition * canvasScaleFactor);
 
     mazeWrapper.css('margin-top', ($(window).height() - mazeHeight - footer.outerHeight()) / 2);
 
@@ -110,7 +113,31 @@ function initKevinMaze() {
 }
 
 function initDanielleMaze() {
-    initKevinMaze();
+
+    // center the maze
+    var mazeWrapper = $('.maze-wrapper');
+    var footer = $('.footer');
+
+    canvas = $('.maze-canvas')[0];
+    context = canvas.getContext("2d");
+
+    drawNewYorkMaze();
+
+    mazeHeight = $('.maze-wrapper').height();
+    mazeWidth = Math.round(mazeHeight * 1.31061599);
+
+    canvasScaleFactor = mazeHeight / 763;
+
+    kevWidth = defaultKevWidth * canvasScaleFactor;
+    kevHeight = defaultKevHeight * canvasScaleFactor;
+
+    kevinXPosition = Math.round(defaultNewYorkXPosition * canvasScaleFactor);
+    kevinYPosition = Math.round(defaultNewYorkYPosition * canvasScaleFactor);
+
+    mazeWrapper.css('margin-top', ($(window).height() - mazeHeight - footer.outerHeight()) / 2);
+
+    canvas.width = mazeWidth;
+    canvas.height = mazeHeight
 }
 
 function setUpKeyListeners(){
@@ -176,12 +203,28 @@ function handleMovement() {
 }
 
 function drawMaze() {
+    if (kevinModeActive) {
+        drawOhioMaze();
+    }
+    if (danielleModeActive) {
+        drawNewYorkMaze();
+    }
+}
 
+function drawOhioMaze() {
     var mazeImg = new Image();
     mazeImg.onload = function () { // when the image is loaded, draw the image, the rectangle and the circle
         context.drawImage(mazeImg, 0, 0, mazeWidth, mazeHeight);
     };
     mazeImg.src = "/static/img/how/ohio-maze.jpg";
+}
+
+function drawNewYorkMaze() {
+    var mazeImg = new Image();
+    mazeImg.onload = function () { // when the image is loaded, draw the image, the rectangle and the circle
+        context.drawImage(mazeImg, 0, 0, mazeWidth, mazeHeight);
+    };
+    mazeImg.src = "/static/img/how/new-york-maze.jpg";
 }
 
 function drawKev() {
