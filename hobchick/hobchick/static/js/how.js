@@ -18,6 +18,9 @@ var mazeHeight;
 var defaultKevWidth = 25;
 var defaultKevHeight = 37;
 
+var defaultDanielleWidth = 20;
+var defaultDanielleHeight = 20;
+
 var kevWidth;
 var kevHeight;
 
@@ -128,8 +131,8 @@ function initDanielleMaze() {
 
     canvasScaleFactor = mazeHeight / 763;
 
-    kevWidth = defaultKevWidth * canvasScaleFactor;
-    kevHeight = defaultKevHeight * canvasScaleFactor;
+    kevWidth = defaultDanielleWidth * canvasScaleFactor;
+    kevHeight = defaultDanielleHeight * canvasScaleFactor;
 
     kevinXPosition = Math.round(defaultNewYorkXPosition * canvasScaleFactor);
     kevinYPosition = Math.round(defaultNewYorkYPosition * canvasScaleFactor);
@@ -239,8 +242,13 @@ function drawKev() {
         kevImage.onload = function() {
             context.drawImage(kevImage, kevinXPosition, kevinYPosition, kevWidth, kevHeight);
         };
-        kevImage.src = "/static/img/how/kev-cartoon-small.png";
 
+        if (kevinModeActive) {
+            kevImage.src = "/static/img/how/kevin-head-small.png";
+        }
+        else if (danielleModeActive) {
+            kevImage.src = "/static/img/how/danielle-head-small.png";
+        }
     }
 
     setTimeout(function() {
