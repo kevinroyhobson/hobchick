@@ -40,7 +40,7 @@ $(function() {
         initKevinMaze();
 
         setTimeout(function() {
-            boundarySet = constructBoundarySet();
+            constructBoundarySet();
             enableDrawingKevin();
         }, 100);
 
@@ -53,7 +53,7 @@ $(function() {
         initDanielleMaze();
 
         setTimeout(function() {
-            boundarySet = constructBoundarySet();
+            constructBoundarySet();
             enableDrawingDanielle();
         }, 100);
 
@@ -222,12 +222,23 @@ function makeGreen(x, y, w, h) {
 }
 
 function constructBoundarySet() {
-    var boundarySet = {};
+    boundarySet = {};
     var imgData = context.getImageData(0, 0, mazeWidth, mazeHeight);
     var data = imgData.data;
 
+    // If the point at 0,0 is black... then the image must not have loaded yet. Let's check back in a few ms.
+    if (pixelIsBlack(0, data)) {
+        setTimeout(function() {
+            constructBoundarySet();
+        }, 10);
+        console.log('image not loaded yet... punting on constructing boundary set.');
+        return;
+    }
+
+    console.log('okay, constructing boundary set now.');
+
     for (var i = 0; i < 4 * mazeWidth * mazeHeight; i += 4) {
-        if (data[i] < 100 && data[i + 1] < 100 && data[i + 2] < 100) { // "black"
+        if (pixelIsBlack(i, data)) {
 
             var index = i / 4;
             var y = Math.floor(index / mazeWidth);
@@ -239,7 +250,10 @@ function constructBoundarySet() {
             }
         }
     }
-    return boundarySet;
+}
+
+function pixelIsBlack(index, imageData) {
+    return imageData[index] < 100 && imageData[index + 1] < 100 && imageData[index + 2] < 100; // "black
 }
 
 function canMoveTo(x, y) {
