@@ -3,22 +3,21 @@ var canvas;
 var context;
 var canvasScaleFactor;
 
-var defaultKevinXPosition = 0; // todo: when I set this to (5, 565), like I want to, everything breaks and I can walk through walls. Weird.
-var defaultKevinYPosition = 0;
+var defaultKevinXPosition = 65;
+var defaultKevinYPosition = 665;
 
 var kevinXPosition;
 var kevinYPosition;
 
-var mazeWidth; // = 1091;
-var mazeHeight; // = 783;
+var mazeWidth;
+var mazeHeight;
 
-var defaultKevWidth = 35
-var defaultKevHeight = 51;
+var defaultKevWidth = 25;
+var defaultKevHeight = 37;
 
 var kevWidth;
 var kevHeight;
 
-var intervalVar;
 var kevImage;
 
 var currentXSpeed = 0;
@@ -36,26 +35,26 @@ $(function() {
 
     $('.kevin-maze-instructions').click(function() {
 
-        kevinModeActive = true;
-        danielleModeActive = false;
+        disableDrawingPeople();
 
         initKevinMaze();
 
         setTimeout(function() {
             boundarySet = constructBoundarySet();
+            enableDrawingKevin();
         }, 100);
 
     });
 
     $('.danielle-maze-instructions').click(function() {
 
-        kevinModeActive = false;
-        danielleModeActive = true;
+        disableDrawingPeople();
 
-        initKevinMaze();
+        initDanielleMaze();
 
         setTimeout(function() {
             boundarySet = constructBoundarySet();
+            enableDrawingDanielle();
         }, 100);
 
     });
@@ -65,6 +64,21 @@ $(function() {
 
     setUpKeyListeners();
 });
+
+function disableDrawingPeople() {
+    kevinModeActive = false;
+    danielleModeActive = false;
+}
+
+function enableDrawingKevin() {
+    kevinModeActive = true;
+    danielleModeActive = false;
+}
+
+function enableDrawingDanielle() {
+    kevinModeActive = false;
+    danielleModeActive = true;
+}
 
 function initKevinMaze() {
 
@@ -77,16 +91,16 @@ function initKevinMaze() {
 
     drawMaze();
 
-    mazeWidth = $('.maze-wrapper').width();
-    mazeHeight = mazeWidth * 0.717;
+    mazeHeight = $('.maze-wrapper').height();
+    mazeWidth = Math.round(mazeHeight / 1.093495935);
 
-    canvasScaleFactor = mazeWidth / 1091;
+    canvasScaleFactor = mazeHeight / 807;
 
     kevWidth = defaultKevWidth * canvasScaleFactor;
     kevHeight = defaultKevHeight * canvasScaleFactor;
 
-    kevinXPosition = defaultKevinXPosition * canvasScaleFactor;
-    kevinYPosition = defaultKevinYPosition * canvasScaleFactor;
+    kevinXPosition = Math.round(defaultKevinXPosition * canvasScaleFactor);
+    kevinYPosition = Math.round(defaultKevinYPosition * canvasScaleFactor);
 
     mazeWrapper.css('margin-top', ($(window).height() - mazeHeight - footer.outerHeight()) / 2);
 
@@ -167,7 +181,7 @@ function drawMaze() {
     mazeImg.onload = function () { // when the image is loaded, draw the image, the rectangle and the circle
         context.drawImage(mazeImg, 0, 0, mazeWidth, mazeHeight);
     };
-    mazeImg.src = "/static/img/how/maze-1.jpg";
+    mazeImg.src = "/static/img/how/ohio-maze.jpg";
 }
 
 function drawKev() {
@@ -213,7 +227,7 @@ function constructBoundarySet() {
     var data = imgData.data;
 
     for (var i = 0; i < 4 * mazeWidth * mazeHeight; i += 4) {
-        if (data[i] === 0 && data[i + 1] === 0 && data[i + 2] === 0) { // black
+        if (data[i] < 100 && data[i + 1] < 100 && data[i + 2] < 100) { // "black"
 
             var index = i / 4;
             var y = Math.floor(index / mazeWidth);
@@ -232,7 +246,7 @@ function canMoveTo(x, y) {
     var canMove = 1; // 1 means: the rectangle can move
 
     var topToCheck = y + Math.floor(kevHeight/4);
-    var bottomToCheck = topToCheck + Math.floor(kevHeight/2);
+    var bottomToCheck = topToCheck + Math.floor(kevHeight/3);
     var leftToCheck = x + Math.floor(kevWidth/4);
     var rightToCheck = leftToCheck + Math.floor(kevWidth/2);
 
