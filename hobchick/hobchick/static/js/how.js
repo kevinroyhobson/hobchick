@@ -18,8 +18,8 @@ var mazeHeight;
 var defaultKevWidth = 25;
 var defaultKevHeight = 37;
 
-var defaultDanielleWidth = 20;
-var defaultDanielleHeight = 20;
+var defaultDanielleWidth = 25;
+var defaultDanielleHeight = 25;
 
 var kevWidth;
 var kevHeight;
@@ -314,10 +314,10 @@ function pixelIsBlack(index, imageData) {
 function canMoveTo(x, y) {
     var canMove = 1; // 1 means: the rectangle can move
 
-    var topToCheck = y + Math.floor(kevHeight/4);
-    var bottomToCheck = topToCheck + Math.floor(kevHeight/3);
-    var leftToCheck = x + Math.floor(kevWidth/4);
-    var rightToCheck = leftToCheck + Math.floor(kevWidth/2);
+    var topToCheck = y + Math.floor((3.0 / 8.0) * kevHeight);
+    var bottomToCheck = topToCheck + Math.floor(kevHeight/4.0);
+    var leftToCheck = x + Math.floor((3.0 / 8.0) * kevWidth);
+    var rightToCheck = leftToCheck + Math.floor(kevWidth/4.0);
 
     // Debug: so you can see the space we're comparing against the boundary
     if (debugMode == true)
