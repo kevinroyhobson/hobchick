@@ -1,7 +1,7 @@
 
 var maxScreenWidth;
 var maxScreenHeight;
-var padding = 20;
+var padding = 0;
 var heightToWidthRatio = 7.0 / 5.0;
 var numTotalPics = 388;
 var picsOnScreenSet;

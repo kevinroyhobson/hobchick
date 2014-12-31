@@ -1,12 +1,7 @@
 
 .screen {
-    margin: 20px;
     float: left;
     background-size: contain;
-}
-
-.screen-right {
-    margin-right: 0;
 }
 
 .why-main-container {
