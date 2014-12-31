@@ -53,3 +53,23 @@ body {
     bottom: 5px;
     right: 0;
 }
+
+.person-image {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+.kevin-image {
+    background-image: url('/static/img/how/kevin-head.png');
+    min-height: 276px;
+    width: 190px;
+    background-repeat: no-repeat;
+}
+
+.danielle-image {
+    background-image: url('/static/img/how/danielle-head.png');
+    min-height: 242px;
+    width: 242px;
+    background-repeat: no-repeat;
+}

@@ -41,6 +41,8 @@ $(function() {
 
     $('.kevin-maze-instructions').click(function() {
 
+        $('.person-image').hide();
+
         disableDrawingPeople();
 
         initKevinMaze();
@@ -53,6 +55,8 @@ $(function() {
     });
 
     $('.danielle-maze-instructions').click(function() {
+
+        $('.person-image').hide();
 
         disableDrawingPeople();
 
