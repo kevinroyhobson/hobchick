@@ -247,7 +247,7 @@ function addFallingwaterPointsOfInterest() {
     });
     _fallingwaterPoi.addTo(_map);
 
-    var barnPoi = L.mapbox.featureLayer({
+    _barnPoi = L.mapbox.featureLayer({
         type: 'Feature',
         geometry: {
             type: 'Point',
@@ -258,13 +258,13 @@ function addFallingwaterPointsOfInterest() {
         },
         properties: {
             title: 'The Barn at Fallingwater',
-            description: "Built in 1870, the Barn at Fallingwater was entrusted to the Western Pennsylvania Conservancy in 1963.<br/><br/><a target='_blank' href='http://www.fallingwater.org/49/about-the-barn-at-fallingwater'>Information</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='https://maps.google.com/maps?um=1&ie=UTF-8&fb=1&gl=us&geocode=KROB5TsGNDWIMXuGpBdfLPl-&daddr=The%20Barn%20at%20Fallingwater,%20Mill%20Run%20Road,%20Mill%20Run,%20PA&sa=X&ei=AcSiVNHGHJLOgwT7n4PADg&ved=0CI0BEPUXMA4&output=classic&dg=brw'>Directions</a>",
+            description: "Built in 1870, the Barn at Fallingwater was entrusted to the Western Pennsylvania Conservancy in 1963. In 2002, it was redesigned as a nature center and event venue.<br/><br/>Kevin and Danielle's ceremony and reception will be held here.<br/><br/><a target='_blank' href='http://www.fallingwater.org/49/about-the-barn-at-fallingwater'>Information</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='https://maps.google.com/maps?um=1&ie=UTF-8&fb=1&gl=us&geocode=KROB5TsGNDWIMXuGpBdfLPl-&daddr=The%20Barn%20at%20Fallingwater,%20Mill%20Run%20Road,%20Mill%20Run,%20PA&sa=X&ei=AcSiVNHGHJLOgwT7n4PADg&ved=0CI0BEPUXMA4&output=classic&dg=brw'>Directions</a>",
             'marker-size': 'medium',
             'marker-color': '#222222',
             'marker-symbol': 'farm'
         }
     });
-    barnPoi.addTo(_map);
+    _barnPoi.addTo(_map);
 
     _sevenSpringsPoi = L.mapbox.featureLayer({
         type: 'Feature',
@@ -277,7 +277,7 @@ function addFallingwaterPointsOfInterest() {
         },
         properties: {
             title: 'Seven Springs',
-            description: "Ski resort by winter, golf course by summer. There is a block of rooms for us here.<br/><br/><a target='_blank' href='http://www.7springs.com/lodging/hotel/'>Information</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='https://maps.google.com/maps?um=1&ie=UTF-8&fb=1&gl=us&geocode=KTHneU33MzWIMbiaCnnTKxZu&daddr=Ski%20View%20Ave,%20Seven%20Springs,%20PA&sa=X&ei=useiVL78E8WZgwTl44DoAw&ved=0CJcBEPUXMA8&output=classic&dg=brw'>Directions</a>",
+            description: "Ski resort by winter, golf course by summer. Guests will find a block of rooms reserved at this resort.<br/><br/><a target='_blank' href='http://www.7springs.com/lodging/hotel/'>Information</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='https://maps.google.com/maps?um=1&ie=UTF-8&fb=1&gl=us&geocode=KTHneU33MzWIMbiaCnnTKxZu&daddr=Ski%20View%20Ave,%20Seven%20Springs,%20PA&sa=X&ei=useiVL78E8WZgwTl44DoAw&ved=0CJcBEPUXMA8&output=classic&dg=brw'>Directions</a>",
             'marker-size': 'medium',
             'marker-color': '#222222',
             'marker-symbol': 'lodging'
@@ -286,6 +286,6 @@ function addFallingwaterPointsOfInterest() {
     _sevenSpringsPoi.addTo(_map);
 
     setTimeout(function() {
-        _fallingwaterPoi.openPopup();
+        _barnPoi.openPopup();
     }, 2000);
 }
