@@ -25,16 +25,17 @@ body {
     cursor: pointer;
 
     padding-top: 30px;
-    padding-left: 1%;
     width: 20%;
 }
 
 .kevin-maze-instructions {
 
-    position: relative;
+    position: absolute;
 
-    float:left;
-    height: 750px;
+    top: 0;
+    left: 1%;
+
+    text-align: left;
 
 }
 
