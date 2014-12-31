@@ -1,4 +1,8 @@
 $(function() {
+
+    // First, we need to make the text size smaller if "SANCHICK" is on two lines. Cuz that screws with the layout.
+    resizeNamesIfNecessary();
+
     setTimeout(function() {
 
         var marginLeft = $('.hobson-column').width() - $('.hob-name-start').width() - 10;
@@ -11,3 +15,12 @@ $(function() {
     }, 1000)}
 
 );
+
+function resizeNamesIfNecessary() {
+
+    var sanchickToHobsonHeightRatio = $('.sanchick-column').height() / $('.hobson-column').height();
+    if (sanchickToHobsonHeightRatio > 1.5 ) {
+        $('.heading-1').css('fontSize', 60 + 'px');
+    }
+
+}
