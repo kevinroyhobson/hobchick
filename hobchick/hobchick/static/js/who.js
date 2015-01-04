@@ -3,8 +3,9 @@ $(function() {
 
     var theCards = $('.baseball-card');
 
-    var windowWidth = $(window).width();
-    var cardWidth = windowWidth * 0.25;
+    var windowHeight = $(window).height();
+    var cardHeight = windowHeight * .8;
+    var cardWidth = cardHeight * 0.727379556;
 
     $('.flip-container').width(cardWidth);
     $('.flipper').width(cardWidth);
@@ -13,10 +14,10 @@ $(function() {
 
 
 
-    $('.flip-container').height(cardWidth * 1.6);
-    $('.flipper').height(cardWidth * 1.6);
-    $('.front').height(cardWidth *1.6);
-    $('.back').height(cardWidth *1.6);
+    $('.flip-container').height(cardHeight);
+    $('.flipper').height(cardHeight);
+    $('.front').height(cardHeight);
+    $('.back').height(cardHeight);
 
 
 

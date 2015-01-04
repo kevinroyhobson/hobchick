@@ -2,7 +2,7 @@
 .card-holder {
 
 
-    width: 75%;
+    width: 65%;
 
     margin: auto;
 
@@ -19,11 +19,11 @@
 
 
 .baseball-card {
+    border-radius: 5px;
 
-    width: 30%;
-    border-radius: 20px;
+    background-size: cover;
 
-
+    width: 530px;
 }
 
 /* entire container, keeps perspective */
@@ -36,8 +36,8 @@
 	}
 
 .flip-container, .front, .back {
-	width: 320px;
-	height: 480px;
+	width: 530px;
+	height: 728px;
 }
 
 /* flip speed goes here */
@@ -85,28 +85,30 @@
 
 .kevin-front {
 
-    background-color: lightsalmon;
+    background-image: url('/static/img/who/kevin-front.jpg');
 
 }
 
 .kevin-back {
 
-    background-color: red;
+    background-color: lightsalmon;
 
 }
 
 .danielle-flip-container {
-    margin-left: 65%;
+    margin-left: 55%;
 }
 
 .danielle-front {
+
+    background-image: url('/static/img/who/danielle-front.jpg');
 
     background-color: cornflowerblue;
 
 }
 
 .danielle-back {
-    background-color: blue;
+    background-color: cornflowerblue;
 }
 
 .kevin-card-name {
