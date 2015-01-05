@@ -12,22 +12,38 @@ var cachedImage;
 
 $(function() {
 
+    onResize();
+
+    showThanks();
+
+    setTimeout(function() {
+        initializeScreens();
+    }, 1500);
+
+    $(window).resize(function () {
+        onResize();
+    });
+
+});
+
+function initializeScreens() {
     picsOnScreenSet = {};
     for (var i = 0; i < numTotalPics; i++) {
         picsOnScreenSet[i] = false;
     }
 
-    onResize();
-
-    var delaysArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    var delaysArray = [0, 1, 2, 3, 4, 5, 6, 7];
     delaysArray = shuffle(delaysArray);
+    delaysArray.push(8);
 
     // Set up the first picture to be cached.
     cachedImageNumber = getRandomPictureNumberNotCurrentlyVisible();
     cacheImage(cachedImageNumber);
 
     var delayIndex = 0;
-    _.each($('.screen'), function(screen) {
+    var screens = $('.non-center-screen');
+    screens.push($('.screen-5'));
+    _.each(screens, function(screen) {
 
         var delay = Math.floor(delaysArray[delayIndex] * 1000)
         setTimeout(function() {
@@ -36,12 +52,7 @@ $(function() {
 
         delayIndex++;
     });
-
-    $(window).resize(function () {
-        onResize();
-    });
-
-});
+}
 
 function onResize() {
     var maxScreenHeight = Math.floor(($(window).height() - $('.footer').height() - padding * 6) / 3);
@@ -53,6 +64,9 @@ function onResize() {
     $('.screen').height(maxScreenHeight + 'px');
 }
 
+function showThanks() {
+    $('.screen-5').animate({'opacity':'1.0'}, 1000);
+}
 
 function changePicture(screen) {
 
@@ -80,7 +94,7 @@ function changePicture(screen) {
 
     window.setTimeout(function() {
             changePicture(screen)
-        }, 9500);
+        }, 9000);
 }
 
 function cacheImage(pictureNumber) {
