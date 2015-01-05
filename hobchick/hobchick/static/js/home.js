@@ -24,3 +24,29 @@ function resizeNamesIfNecessary() {
     }
 
 }
+
+$(function() {
+
+    setTimeout(function() {
+        incrementFireworks();
+    }, 1500);
+
+
+});
+
+var fireworksStep = 0;
+
+function incrementFireworks() {
+    fireworksStep++;
+    if (fireworksStep >= 5) {
+        return;
+    }
+
+    var fwfw = $('.fw-fw');
+    var newBackgroundUrl = '/static/img/home/fw-fw-' + fireworksStep + '.jpg';
+    fwfw.attr('src', newBackgroundUrl);
+
+    setTimeout(function() {
+        incrementFireworks();
+    }, 500);
+}

@@ -44,6 +44,7 @@ img.banner.banner-left {
     font-size: 300px;
     text-align: center;
     padding-top: 175px;
+    text-align: center;
 }
 
 .hob-name-start {
@@ -126,4 +127,11 @@ a:hover {
     font-size: 250px;
     text-align: center;
     padding-top: 10%;
+}
+
+.fw-fw {
+    width: 424px;
+    height: 393px;
+    margin: auto;
+
 }
