@@ -16,9 +16,7 @@ $(function() {
 
     showThanks();
 
-    setTimeout(function() {
-        initializeScreens();
-    }, 1500);
+    initializeScreens();
 
     $(window).resize(function () {
         onResize();
