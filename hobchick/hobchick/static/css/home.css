@@ -43,7 +43,6 @@ img.banner.banner-left {
 .picture-placeholder {
     font-size: 300px;
     text-align: center;
-    padding-top: 175px;
     text-align: center;
 }
 
@@ -134,4 +133,15 @@ a:hover {
     height: 393px;
     margin: auto;
 
+    opacity: 0;
+
+    position: absolute;
+
+    margin-top: 10%;
+    margin-bottom: 10%;
 }
+
+.fw-fw-0 {
+    opacity: 1;
+}
+

@@ -42,11 +42,24 @@ function incrementFireworks() {
         return;
     }
 
-    var fwfw = $('.fw-fw');
-    var newBackgroundUrl = '/static/img/home/fw-fw-' + fireworksStep + '.jpg';
-    fwfw.attr('src', newBackgroundUrl);
+    var currentFwDiv = $('.fw-fw-' + (fireworksStep - 1));
+
+    var newFwDiv = $('.fw-fw-' + fireworksStep);
+    newFwDiv.animate({opacity: '1'}, 350);
 
     setTimeout(function() {
         incrementFireworks();
     }, 500);
+}
+
+$(function() {
+    rearrangeFireworksDivs();
+});
+
+function rearrangeFireworksDivs() {
+
+    var columnWidth = $('.picture-placeholder').width();
+    var fwWidth = $('.fw-fw-0').width();
+    var leftOffset = Math.round((columnWidth - fwWidth) / 2.0);
+    $('.fw-fw').css('left', leftOffset + 'px');
 }
