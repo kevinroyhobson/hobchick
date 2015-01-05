@@ -3,7 +3,7 @@ var maxScreenWidth;
 var maxScreenHeight;
 var padding = 10;
 var heightToWidthRatio = 7.0 / 5.0;
-var numTotalPics = 388;
+var numTotalPics = 488;
 var picsOnScreenSet;
 
 // We cache an image one screen transition before it is supposed to be displayed. This way we never see a loading delay during fade-in.
