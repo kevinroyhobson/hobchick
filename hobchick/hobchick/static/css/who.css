@@ -91,7 +91,7 @@
 
 .kevin-back {
 
-    background-color: lightsalmon;
+    background-image: url('/static/img/who/kevin-back.jpg');
 
 }
 
@@ -103,12 +103,10 @@
 
     background-image: url('/static/img/who/danielle-front.jpg');
 
-    background-color: cornflowerblue;
-
 }
 
 .danielle-back {
-    background-color: cornflowerblue;
+    background-image: url('/static/img/who/danielle-back.jpg');
 }
 
 .kevin-card-name {
