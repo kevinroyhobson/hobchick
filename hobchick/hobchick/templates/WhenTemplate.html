@@ -9,15 +9,25 @@
 
     {% include "IncludesTemplate.html" %}
     <link rel='stylesheet' type='text/css' href='{% static "css/inverted.css" %}'>
+    <link rel='stylesheet' type='text/css' href='{% static "css/flipclock.css" %}'>
+    <link rel='stylesheet' type='text/css' href='{% static "css/when.css" %}'>
+
+    <script type='text/javascript' src='{% static "js/when.js" %}'></script>
+    <script type='text/javascript' src='{% static "js/lib/flipclock.min.js" %}'></script>
 
 </head>
 <body style="height:100%;">
-    <div class="my-fluid-container">
-        <div class="row full-height">
-            <div class="white-text when-date">
-                JULY 4, 2015
-            </div>
+
+    <div class="clock-container">
+
+        <div class="clock">
+
         </div>
+
+        <div class="wedding-date">
+            JULY 4, 2015 5:30 PM
+        </div>
+
     </div>
 
     {% include "FooterTemplate.html" %}
