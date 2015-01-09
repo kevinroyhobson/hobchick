@@ -33,4 +33,6 @@ $(function() {
     });
 
     onResize();
+
+    $('.front, .back').css('transition', '1.0s');
 });

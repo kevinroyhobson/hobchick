@@ -1,7 +1,6 @@
 
 .cards-holder {
 
-
     width: 100%;
 
     margin: auto;
@@ -39,20 +38,23 @@
 /* entire container, keeps perspective */
 .flip-container {
 	perspective: 1000;
+	transform-style: preserve-3d;
 }
-	/* flip the pane when hovered */
-	.flip-container:hover .flipper, .flip-container.hover .flipper {
-		transform: rotateY(180deg);
-	}
+
+/* flip the pane when hovered */
+.flip-container:hover .back {
+    transform: rotateY(0deg);
+}
+.flip-container:hover .front {
+    transform: rotateY(180deg);
+}
 
 .flip-container, .front, .back {
 	width: 530px;
 	height: 728px;
 }
 
-/* flip speed goes here */
 .flipper {
-	transition: 1.0s;
 	transform-style: preserve-3d;
 
 	position: relative;
@@ -61,6 +63,8 @@
 /* hide back of pane during swap */
 .front, .back {
 	backface-visibility: hidden;
+	transform-style: preserve-3d;
+
 
 	position: absolute;
 	top: 0;
@@ -70,7 +74,6 @@
 /* front pane, placed above back */
 .front {
 	z-index: 2;
-	/* for firefox 31 */
 	transform: rotateY(0deg);
 }
 
