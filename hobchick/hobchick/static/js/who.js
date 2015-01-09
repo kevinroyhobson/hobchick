@@ -1,5 +1,6 @@
 
-$(function() {
+
+function onResize() {
 
     var theCards = $('.baseball-card');
 
@@ -19,6 +20,13 @@ $(function() {
     $('.front').height(cardHeight);
     $('.back').height(cardHeight);
 
+}
 
+$(function() {
 
+    $(window).resize(function() {
+        onResize();
+    });
+
+    onResize();
 });
