@@ -1,8 +1,8 @@
 
-.card-holder {
+.cards-holder {
 
 
-    width: 65%;
+    width: 100%;
 
     margin: auto;
 
@@ -16,7 +16,17 @@
 .flip-container .flipper .front {
 }
 
+.card-holder {
+    width: 50%;
+}
 
+.kevin-card-holder {
+
+}
+
+.danielle-card-holder {
+    float: right;
+}
 
 .baseball-card {
     border-radius: 5px;
@@ -95,10 +105,6 @@
 
 }
 
-.danielle-flip-container {
-    margin-left: 55%;
-}
-
 .danielle-front {
 
     background-image: url('/static/img/who/danielle-front.jpg');
@@ -107,12 +113,4 @@
 
 .danielle-back {
     background-image: url('/static/img/who/danielle-back.jpg');
-}
-
-.kevin-card-name {
-    left: 10px;
-}
-
-.danielle-card-name {
-    right: 10px;
 }
