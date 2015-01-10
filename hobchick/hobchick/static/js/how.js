@@ -39,9 +39,10 @@ var debugMode = false;
 
 $(function() {
 
-    $('.kevin-maze-instructions').click(function() {
+    $('.kevin-head').click(function() {
 
-        $('.person-image').hide();
+        $('.selection').hide();
+        $('.kevin-maze-instructions').show('fast');
 
         disableDrawingPeople();
 
@@ -54,9 +55,10 @@ $(function() {
 
     });
 
-    $('.danielle-maze-instructions').click(function() {
+    $('.danielle-head').click(function() {
 
-        $('.person-image').hide();
+        $('.selection').hide();
+        $('.danielle-maze-instructions').show('fast');
 
         disableDrawingPeople();
 
@@ -112,7 +114,7 @@ function initKevinMaze() {
     kevinXPosition = Math.round(defaultOhioXPosition * canvasScaleFactor);
     kevinYPosition = Math.round(defaultOhioYPosition * canvasScaleFactor);
 
-    mazeWrapper.css('margin-top', ($(window).height() - mazeHeight - footer.outerHeight()) / 2);
+    mazeWrapper.css('padding-top', ($(window).height() - mazeHeight - footer.outerHeight()) / 2);
 
     canvas.width = mazeWidth;
     canvas.height = mazeHeight;
@@ -141,7 +143,7 @@ function initDanielleMaze() {
     kevinXPosition = Math.round(defaultNewYorkXPosition * canvasScaleFactor);
     kevinYPosition = Math.round(defaultNewYorkYPosition * canvasScaleFactor);
 
-    mazeWrapper.css('margin-top', ($(window).height() - mazeHeight - footer.outerHeight()) / 2);
+    mazeWrapper.css('padding-top', ($(window).height() - mazeHeight - footer.outerHeight()) / 2);
 
     canvas.width = mazeWidth;
     canvas.height = mazeHeight

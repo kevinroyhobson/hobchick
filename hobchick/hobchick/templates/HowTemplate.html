@@ -7,6 +7,7 @@
     <meta charset='UTF-8'>
     <title>Hobchick 2015 - How</title>
 
+    {% include "MetaTemplate.html" %}
     {% include "IncludesTemplate.html" %}
     <link rel='stylesheet' type='text/css' href='{% static "css/inverted.css" %}'>
     <link rel='stylesheet' type='text/css' href='{% static "css/how.css" %}'>
@@ -14,14 +15,13 @@
     <script type='text/javascript' src='{% static "js/lib/keypress-2.1.0.min.js" %}'></script>
 
 </head>
-<body>
+<body class="main-text">
 
     <div class="main-text maze-instructions kevin-maze-instructions">
-        HELP KEVIN GET TO THE WEDDING.
+        <span class="instructions-wrapper">
+            HELP KEVIN GET TO THE WEDDING.
+        </span>
 
-        <div class="person-image kevin-image">
-            &nbsp;
-        </div>
 
 
         <!--
@@ -34,6 +34,26 @@
 
     <div class="maze-wrapper">
 
+        <div class="selection">
+
+            <div class="choose-player">
+                CHOOSE YOUR PLAYER
+            </div>
+
+            <div class="heads">
+
+                <div class="person-wrapper">
+                    <img class="head kevin-head" src="/static/img/how/kevin-head.png">
+                </div>
+
+                <div class="person-wrapper">
+                    <img class="head danielle-head" src="/static/img/how/danielle-head.png">
+                </div>
+
+            </div>
+
+        </div>
+
         <canvas class="maze-canvas">
             Sorry, looks like your browser doesn't support HTML5.
             Try using Google Chrome if you want to see how Kevin's gonna get to the wedding.
@@ -42,11 +62,11 @@
     </div>
 
     <div class="main-text maze-instructions danielle-maze-instructions">
-        HELP DANIELLE GET TO THE WEDDING
 
-        <div class="person-image danielle-image">
-            &nbsp;
-        </div>
+        <span class="instructions-wrapper">
+            HELP DANIELLE GET TO THE WEDDING.
+        </span>
+
 
     </div>
 
