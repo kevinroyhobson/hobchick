@@ -1,11 +1,16 @@
 
 .what-main {
-    width: 80%;
+    width: 100%;
     margin: auto;
 
     font-family: 'Montserrat', sans-serif;
 
     padding-top: 0;
+
+    overflow-y: scroll;
+
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 .what-item {
