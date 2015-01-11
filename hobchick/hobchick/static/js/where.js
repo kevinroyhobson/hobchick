@@ -243,7 +243,7 @@ function addFallingwaterPointsOfInterest() {
         },
         properties: {
             title: 'The Barn at Fallingwater',
-            description: "Built in 1870, the Barn at Fallingwater was entrusted to the Western Pennsylvania Conservancy in 1963. In 2002, it was redesigned as a nature center and event venue.<br/><br/>Kevin and Danielle's ceremony and reception will be held here.<br/><br/><a target='_blank' href='http://www.fallingwater.org/49/about-the-barn-at-fallingwater'>Information</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='https://maps.google.com/maps?um=1&ie=UTF-8&fb=1&gl=us&geocode=KROB5TsGNDWIMXuGpBdfLPl-&daddr=The%20Barn%20at%20Fallingwater,%20Mill%20Run%20Road,%20Mill%20Run,%20PA&sa=X&ei=AcSiVNHGHJLOgwT7n4PADg&ved=0CI0BEPUXMA4&output=classic&dg=brw'>Directions</a>",
+            description: "Originally built in 1870, the Barn at Fallingwater was purchased by Fallingwater owner Edgar J. Kaufmann in 1940 and operated as a dairy farm. It became a nature center after being entrusted to the Western Pennsylvania Conservancy in 1963, and has been used as an administrative and event space since being renovated in 2002.<br/><br/>Kevin and Danielle's ceremony and reception will be held here.<br/><br/><a target='_blank' href='http://www.fallingwater.org/49/about-the-barn-at-fallingwater'>Information</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='https://maps.google.com/maps?um=1&ie=UTF-8&fb=1&gl=us&geocode=KROB5TsGNDWIMXuGpBdfLPl-&daddr=The%20Barn%20at%20Fallingwater,%20Mill%20Run%20Road,%20Mill%20Run,%20PA&sa=X&ei=AcSiVNHGHJLOgwT7n4PADg&ved=0CI0BEPUXMA4&output=classic&dg=brw'>Directions</a>",
             'marker-size': 'medium',
             'marker-color': '#a51e2d',
             'marker-symbol': 'farm'
@@ -262,7 +262,7 @@ function addFallingwaterPointsOfInterest() {
         },
         properties: {
             title: 'Fallingwater',
-            description: "Designed in 1935, Frank Lloyd Wright's masterpiece was designated a National Historical Landmark in 1966.<br/><br/><a target='_blank' href='http://www.fallingwater.org/'>Information</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='https://maps.google.com/maps?um=1&ie=UTF-8&fb=1&gl=us&geocode=KTHneU33MzWIMbiaCnnTKxZu&daddr=Fallingwater,%201491%20Mill%20Run%20Road,%20Mill%20Run,%20Pennsylvania%2015464&sa=X&ei=useiVL78E8WZgwTl44DoAw&ved=0CJcBEPUXMA8&output=classic&dg=brw'>Directions</a>",
+            description: "Frank Lloyd Wright's masterpiece was built for the Kaufmann family in 1939. Sited over a waterfall on Bear Run, the house features a dramatic use of cantilevers and demonstrates Wright's \"organic\" style of architecture by engaging the surrounding natural elements.<br/><br/>Fallingwater served as the Kaufmann's country home until 1963 when it was entrusted to the Western Pennsylvania Conservancy. The house is a National Historic Landmark and tours are available to the public.<br/><br/><a target='_blank' href='http://www.fallingwater.org/'>Information</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='https://maps.google.com/maps?um=1&ie=UTF-8&fb=1&gl=us&geocode=KTHneU33MzWIMbiaCnnTKxZu&daddr=Fallingwater,%201491%20Mill%20Run%20Road,%20Mill%20Run,%20Pennsylvania%2015464&sa=X&ei=useiVL78E8WZgwTl44DoAw&ved=0CJcBEPUXMA8&output=classic&dg=brw'>Directions</a>",
             'marker-size': 'medium',
             'marker-color': '#222222',
             'marker-symbol': 'star'
@@ -281,7 +281,7 @@ function addFallingwaterPointsOfInterest() {
         },
         properties: {
             title: 'Seven Springs',
-            description: "Ski resort by winter, golf course by summer. Guests will find a block of rooms reserved at this resort.<br/><br/><a target='_blank' href='http://www.7springs.com/lodging/hotel/'>Information</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='https://maps.google.com/maps?um=1&ie=UTF-8&fb=1&gl=us&geocode=KTHneU33MzWIMbiaCnnTKxZu&daddr=Ski%20View%20Ave,%20Seven%20Springs,%20PA&sa=X&ei=useiVL78E8WZgwTl44DoAw&ved=0CJcBEPUXMA8&output=classic&dg=brw'>Directions</a>",
+            description: "Ski Resort by winter, golf course by summer. Guests will find a block of rooms reserved at this resort along with several bars, restaurants & outdoor activities.<br/><br/><a target='_blank' href='http://www.7springs.com/lodging/hotel/'>Information</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='https://maps.google.com/maps?um=1&ie=UTF-8&fb=1&gl=us&geocode=KTHneU33MzWIMbiaCnnTKxZu&daddr=Ski%20View%20Ave,%20Seven%20Springs,%20PA&sa=X&ei=useiVL78E8WZgwTl44DoAw&ved=0CJcBEPUXMA8&output=classic&dg=brw'>Directions</a>",
             'marker-size': 'medium',
             'marker-color': '#222222',
             'marker-symbol': 'lodging'
