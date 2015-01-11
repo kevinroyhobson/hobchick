@@ -56,9 +56,8 @@ body {
 }
 
 .arrow-keys {
-    position: absolute;
-    bottom: 5px;
-    right: 0;
+    padding-top: 50px;
+    font-size: 18px;
 }
 
 .heads {

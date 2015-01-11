@@ -26,14 +26,19 @@ var kevHeight;
 
 var kevImage;
 
-var currentXSpeed = 0;
-var currentYSpeed = 0;
+var currentXSpeedKeyboard = 0;
+var currentYSpeedKeyboard = 0;
+var currentXSpeedMouse = 0;
+var currentYSpeedMouse = 0;
 var speedConstant = 6;
 
 var boundarySet;
 
 var kevinModeActive = false;
 var danielleModeActive = false;
+
+var previousMouseX;
+var previousMouseY;
 
 var debugMode = false;
 
@@ -53,6 +58,8 @@ $(function() {
             enableDrawingKevin();
         }, 100);
 
+        ga('send', 'event', 'maze', 'kevin-start');
+
     });
 
     $('.danielle-head').click(function() {
@@ -69,12 +76,12 @@ $(function() {
             enableDrawingDanielle();
         }, 100);
 
+        ga('send', 'event', 'maze', 'danielle-start');
+
     });
 
     drawKev();
     handleMovement();
-
-    setUpKeyListeners();
 });
 
 function disableDrawingPeople() {
@@ -119,6 +126,9 @@ function initKevinMaze() {
     canvas.width = mazeWidth;
     canvas.height = mazeHeight;
 
+    setUpKeyListeners();
+    //setUpMouseListener();
+
 }
 
 function initDanielleMaze() {
@@ -146,7 +156,10 @@ function initDanielleMaze() {
     mazeWrapper.css('padding-top', ($(window).height() - mazeHeight - footer.outerHeight()) / 2);
 
     canvas.width = mazeWidth;
-    canvas.height = mazeHeight
+    canvas.height = mazeHeight;
+
+    setUpKeyListeners();
+    //setUpMouseListener();
 }
 
 function setUpKeyListeners(){
@@ -155,56 +168,95 @@ function setUpKeyListeners(){
     listener.register_combo({
         "keys" : "up",
         "on_keydown" : function() {
-            currentYSpeed = -1 * speedConstant;
+            currentYSpeedKeyboard = -1 * speedConstant;
         },
         "on_keyup" : function() {
-            currentYSpeed = 0;
+            currentYSpeedKeyboard = 0;
         }
     });
 
     listener.register_combo({
         "keys" : "down",
         "on_keydown" : function() {
-            currentYSpeed = speedConstant;
+            currentYSpeedKeyboard = speedConstant;
         },
         "on_keyup" : function() {
-            currentYSpeed = 0;
+            currentYSpeedKeyboard = 0;
         }
     });
 
     listener.register_combo({
         "keys" : "left",
         "on_keydown" : function() {
-            currentXSpeed = -1 * speedConstant;
+            currentXSpeedKeyboard = -1 * speedConstant;
         },
         "on_keyup" : function() {
-            currentXSpeed = 0;
+            currentXSpeedKeyboard = 0;
         }
     });
 
     listener.register_combo({
         "keys" : "right",
         "on_keydown" : function() {
-            currentXSpeed = speedConstant;
+            currentXSpeedKeyboard = speedConstant;
         },
         "on_keyup" : function() {
-            currentXSpeed = 0;
+            currentXSpeedKeyboard = 0;
         }
     });
 
 }
 
-function handleMovement() {
-    var potentialX = kevinXPosition + currentXSpeed;
-    var potentialY = kevinYPosition + currentYSpeed;
+function setUpMouseListener() {
 
-    if (currentXSpeed != 0 && canMoveTo(potentialX, kevinYPosition)) {
+    $('body').mousemove(function(event) {
+       console.log('moved the mouse!');
+
+        if (previousMouseX == undefined && previousMouseY == undefined) {
+            previousMouseX = event.pageX;
+            previousMouseY = event.pageY;
+            console.log('x=' + previousMouseX + ', y=' + previousMouseY);
+        }
+
+        if (event.pageX > previousMouseX) {
+            currentXSpeedMouse = speedConstant;
+        }
+        else if (event.pageX < previousMouseX) {
+            currentXSpeedMouse = -1 * speedConstant;
+        }
+        else {
+            currentXSpeedMouse = 0;
+        }
+
+        if (event.pageY > previousMouseY) {
+            currentYSpeedMouse = speedConstant;
+        }
+        else if (event.pageY < previousMouseY) {
+            currentYSpeedMouse = -1 * speedConstant;
+        }
+        else {
+            currentYSpeedMouse = 0;
+        }
+
+
+    });
+
+}
+
+function handleMovement() {
+    var potentialX = kevinXPosition + currentXSpeedKeyboard + currentXSpeedMouse;
+    var potentialY = kevinYPosition + currentYSpeedKeyboard + currentYSpeedMouse;
+
+    if ((currentXSpeedKeyboard != 0 || currentXSpeedMouse != 0) && canMoveTo(potentialX, kevinYPosition)) {
         kevinXPosition = potentialX;
     }
 
-    if (currentYSpeed != 0 && canMoveTo(kevinXPosition, potentialY)) {
+    if ((currentYSpeedKeyboard != 0 || currentYSpeedMouse != 0) && canMoveTo(kevinXPosition, potentialY)) {
         kevinYPosition = potentialY;
     }
+
+    currentXSpeedMouse = 0;
+    currentYSpeedMouse = 0;
 
     setTimeout(function() {
         handleMovement();
