@@ -246,7 +246,8 @@ function addFallingwaterPointsOfInterest() {
             description: "Originally built in 1870, the Barn at Fallingwater was purchased by Fallingwater owner Edgar J. Kaufmann in 1940 and operated as a dairy farm. It became a nature center after being entrusted to the Western Pennsylvania Conservancy in 1963, and has been used as an administrative and event space since being renovated in 2002.<br/><br/>Kevin and Danielle's ceremony and reception will be held here.<br/><br/><a target='_blank' href='http://www.fallingwater.org/49/about-the-barn-at-fallingwater'>Information</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='https://maps.google.com/maps?um=1&ie=UTF-8&fb=1&gl=us&geocode=KROB5TsGNDWIMXuGpBdfLPl-&daddr=The%20Barn%20at%20Fallingwater,%20Mill%20Run%20Road,%20Mill%20Run,%20PA&sa=X&ei=AcSiVNHGHJLOgwT7n4PADg&ved=0CI0BEPUXMA4&output=classic&dg=brw'>Directions</a>",
             'marker-size': 'medium',
             'marker-color': '#a51e2d',
-            'marker-symbol': 'farm'
+            'marker-symbol': 'farm',
+            'zIndexOffset': 1
         }
     });
     _barnPoi.addTo(_map);
@@ -303,7 +304,7 @@ function addFallingwaterPointsOfInterest() {
             description: "Zip-lining, mountain biking, rock climbing, white water rafting and kayaking in beautiful Ohiopyle State Park.<br/><br/><a target='_blank' href='http://www.laurelhighlands.com/activities/'>Information</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='https://maps.google.com/maps?um=1&ie=UTF-8&fb=1&gl=us&geocode=KTHneU33MzWIMbiaCnnTKxZu&daddr=4+Sherman+St,+Ohiopyle,+PA+15470&sa=X&ei=useiVL78E8WZgwTl44DoAw&ved=0CJcBEPUXMA8&output=classic&dg=brw'>Directions</a>",
             'marker-size': 'medium',
             'marker-color': '#222222',
-            'marker-symbol': 'star'
+            'marker-symbol': 'ferry'
         }
     });
     _laurelHighlandsToursPoi.addTo(_map);
@@ -326,6 +327,8 @@ function addFallingwaterPointsOfInterest() {
         }
     });
     _kentuckKnobPoi.addTo(_map);
+
+    _barnPoi.bringToFront();
 
     setTimeout(function() {
         _barnPoi.openPopup();
