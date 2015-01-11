@@ -2,6 +2,8 @@
 var _fallingwaterLocation = L.latLng(39.906230, -79.467922);
 var _barnLocation = L.latLng(39.906607, -79.460282);
 var _sevenSpringsLocation = L.latLng(40.023137, -79.297773);
+var _laurelHighlandsToursLocation = L.latLng(39.871145, -79.492621);
+var _kentuckKnobLocation = L.latLng(39.872380, -79.523123);
 
 var _lgaLocation = L.latLng(40.77591055, -73.872799873);
 var _cvgLocation = L.latLng(39.055584, -84.661873);
@@ -14,8 +16,8 @@ var _iadLocation = L.latLng(38.851540, -77.040170);
 
 var _pitLocation = L.latLng(40.496179, -80.241419);
 
-var _centerOfMap = L.latLng((_fallingwaterLocation.lat + _sevenSpringsLocation.lat) / 2,
-                            (_fallingwaterLocation.lng + _sevenSpringsLocation.lng) / 2);
+var _centerOfMap = L.latLng((_kentuckKnobLocation.lat + _sevenSpringsLocation.lat) / 2,
+                            (_kentuckKnobLocation.lng + _sevenSpringsLocation.lng) / 2);
 
 var newYorkPlane = {
     "startingLocation": _lgaLocation,
@@ -225,8 +227,29 @@ function centerAndZoom() {
 var _fallingwaterPoi;
 var _barnPoi;
 var _sevenSpringsPoi;
+var _laurelHighlandsToursPoi;
+var _kentuckKnobPoi;
 
 function addFallingwaterPointsOfInterest() {
+
+    _barnPoi = L.mapbox.featureLayer({
+        type: 'Feature',
+        geometry: {
+            type: 'Point',
+            coordinates: [
+                _barnLocation.lng,
+                _barnLocation.lat
+            ]
+        },
+        properties: {
+            title: 'The Barn at Fallingwater',
+            description: "Built in 1870, the Barn at Fallingwater was entrusted to the Western Pennsylvania Conservancy in 1963. In 2002, it was redesigned as a nature center and event venue.<br/><br/>Kevin and Danielle's ceremony and reception will be held here.<br/><br/><a target='_blank' href='http://www.fallingwater.org/49/about-the-barn-at-fallingwater'>Information</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='https://maps.google.com/maps?um=1&ie=UTF-8&fb=1&gl=us&geocode=KROB5TsGNDWIMXuGpBdfLPl-&daddr=The%20Barn%20at%20Fallingwater,%20Mill%20Run%20Road,%20Mill%20Run,%20PA&sa=X&ei=AcSiVNHGHJLOgwT7n4PADg&ved=0CI0BEPUXMA4&output=classic&dg=brw'>Directions</a>",
+            'marker-size': 'medium',
+            'marker-color': '#a51e2d',
+            'marker-symbol': 'farm'
+        }
+    });
+    _barnPoi.addTo(_map);
 
     _fallingwaterPoi = L.mapbox.featureLayer({
         type: 'Feature',
@@ -247,25 +270,6 @@ function addFallingwaterPointsOfInterest() {
     });
     _fallingwaterPoi.addTo(_map);
 
-    _barnPoi = L.mapbox.featureLayer({
-        type: 'Feature',
-        geometry: {
-            type: 'Point',
-            coordinates: [
-                _barnLocation.lng,
-                _barnLocation.lat
-            ]
-        },
-        properties: {
-            title: 'The Barn at Fallingwater',
-            description: "Built in 1870, the Barn at Fallingwater was entrusted to the Western Pennsylvania Conservancy in 1963. In 2002, it was redesigned as a nature center and event venue.<br/><br/>Kevin and Danielle's ceremony and reception will be held here.<br/><br/><a target='_blank' href='http://www.fallingwater.org/49/about-the-barn-at-fallingwater'>Information</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='https://maps.google.com/maps?um=1&ie=UTF-8&fb=1&gl=us&geocode=KROB5TsGNDWIMXuGpBdfLPl-&daddr=The%20Barn%20at%20Fallingwater,%20Mill%20Run%20Road,%20Mill%20Run,%20PA&sa=X&ei=AcSiVNHGHJLOgwT7n4PADg&ved=0CI0BEPUXMA4&output=classic&dg=brw'>Directions</a>",
-            'marker-size': 'medium',
-            'marker-color': '#222222',
-            'marker-symbol': 'farm'
-        }
-    });
-    _barnPoi.addTo(_map);
-
     _sevenSpringsPoi = L.mapbox.featureLayer({
         type: 'Feature',
         geometry: {
@@ -284,6 +288,44 @@ function addFallingwaterPointsOfInterest() {
         }
     });
     _sevenSpringsPoi.addTo(_map);
+
+    _laurelHighlandsToursPoi = L.mapbox.featureLayer({
+        type: 'Feature',
+        geometry: {
+            type: 'Point',
+            coordinates: [
+                _laurelHighlandsToursLocation.lng,
+                _laurelHighlandsToursLocation.lat
+            ]
+        },
+        properties: {
+            title: 'Laurel Highlands River Tours and Outdoor Center',
+            description: "Zip-lining, mountain biking, rock climbing, white water rafting and kayaking in beautiful Ohiopyle State Park.<br/><br/><a target='_blank' href='http://www.laurelhighlands.com/activities/'>Information</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='https://maps.google.com/maps?um=1&ie=UTF-8&fb=1&gl=us&geocode=KTHneU33MzWIMbiaCnnTKxZu&daddr=4+Sherman+St,+Ohiopyle,+PA+15470&sa=X&ei=useiVL78E8WZgwTl44DoAw&ved=0CJcBEPUXMA8&output=classic&dg=brw'>Directions</a>",
+            'marker-size': 'medium',
+            'marker-color': '#222222',
+            'marker-symbol': 'star'
+        }
+    });
+    _laurelHighlandsToursPoi.addTo(_map);
+
+    _kentuckKnobPoi = L.mapbox.featureLayer({
+        type: 'Feature',
+        geometry: {
+            type: 'Point',
+            coordinates: [
+                _kentuckKnobLocation.lng,
+                _kentuckKnobLocation.lat
+            ]
+        },
+        properties: {
+            title: 'Kentuck Knob',
+            description: 'While focusing on many other projects including the Guggenheim Museum in New York, the 86-year-old Wright "shook [Kentuck Knob] out of his sleeves."<br/><br/><a target="_blank" href="http://kentuckknob.com/">Information</a>&nbsp;&nbsp;&nbsp;<a target="_blank" href="https://maps.google.com/maps?um=1&ie=UTF-8&fb=1&gl=us&geocode=KTHneU33MzWIMbiaCnnTKxZu&daddr=723+Kentuck+Rd,+Dunbar,+PA+15431&sa=X&ei=useiVL78E8WZgwTl44DoAw&ved=0CJcBEPUXMA8&output=classic&dg=brw">Directions</a>',
+            'marker-size': 'medium',
+            'marker-color': '#222222',
+            'marker-symbol': 'star'
+        }
+    });
+    _kentuckKnobPoi.addTo(_map);
 
     setTimeout(function() {
         _barnPoi.openPopup();
