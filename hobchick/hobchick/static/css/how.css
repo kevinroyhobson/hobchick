@@ -68,6 +68,10 @@ body {
     cursor: pointer;
 }
 
+.kevin-head {
+    margin-top: -50px;
+}
+
 .person-wrapper {
     margin-left: auto;
     margin-right: auto;
