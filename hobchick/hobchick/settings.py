@@ -21,11 +21,11 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = 'y8afug66)t%5ccm6!wyz^1mn-z-zyf2#i^%&qtl&un=t_r371$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['54.149.188.241', 'www.hobchick.com', 'hobchick.com']
 
 
 # Application definition
