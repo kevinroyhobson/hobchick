@@ -24,8 +24,8 @@ var mazeHeight;
 var defaultKevWidth = 25;
 var defaultKevHeight = 37;
 
-var defaultDanielleWidth = 35;
-var defaultDanielleHeight = 35;
+var defaultDanielleWidth = 40;
+var defaultDanielleHeight = 43;
 
 var kevWidth;
 var kevHeight;
