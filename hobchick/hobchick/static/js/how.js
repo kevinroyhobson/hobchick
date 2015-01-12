@@ -258,12 +258,12 @@ function setUpKeyListeners(){
 function setUpMouseListener() {
 
     $('body').mousemove(function(event) {
-       console.log('moved the mouse!');
+       //console.log('moved the mouse!');
 
         if (previousMouseX == undefined && previousMouseY == undefined) {
             previousMouseX = event.pageX;
             previousMouseY = event.pageY;
-            console.log('x=' + previousMouseX + ', y=' + previousMouseY);
+            //console.log('x=' + previousMouseX + ', y=' + previousMouseY);
         }
 
         if (event.pageX > previousMouseX) {
@@ -396,11 +396,11 @@ function constructBoundarySet() {
         setTimeout(function() {
             constructBoundarySet();
         }, 10);
-        console.log('image not loaded yet... punting on constructing boundary set.');
+        //console.log('image not loaded yet... punting on constructing boundary set.');
         return;
     }
 
-    console.log('okay, constructing boundary set now.');
+    //console.log('okay, constructing boundary set now.');
 
     for (var i = 0; i < 4 * mazeWidth * mazeHeight; i += 4) {
         if (pixelIsBlack(i, data)) {
@@ -441,7 +441,7 @@ function canMoveTo(x, y) {
                 var strToCheck = xToCheck + ',' + yToCheck;
 
                 if (boundarySet[strToCheck] == true) {
-                    console.log("that's a wall");
+                    //console.log("that's a wall");
                     return 0; // there's a pixel that overlaps with a boundary -- we can't move here.
                 }
 
@@ -453,7 +453,7 @@ function canMoveTo(x, y) {
                     }
                 }
                 else {
-                    console.log('checked ' + strToCheck + ' for victory.');
+                    //console.log('checked ' + strToCheck + ' for victory.');
                 }
             }
         }
