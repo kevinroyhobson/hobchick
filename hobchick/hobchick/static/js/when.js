@@ -2,7 +2,7 @@
 
 $(function() {
 
-    var wedding = new Date(2015, 6, 4, 17, 30, 0, 0);
+    var wedding = new Date(2015, 6, 4, 17, 0, 0, 0);
     var now = new Date();
 
     var secondsTillTheWedding = (wedding.getTime() - now.getTime()) / 1000;
