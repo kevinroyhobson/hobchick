@@ -3,11 +3,17 @@ var canvas;
 var context;
 var canvasScaleFactor;
 
-var defaultOhioXPosition = 65;
 var defaultOhioYPosition = 665;
+var defaultOhioXPosition = 65;
+
+var ohioFinishXPosition = 700;
+var ohioFinishYPosition = 390;
 
 var defaultNewYorkXPosition = 780;
 var defaultNewYorkYPosition = 640;
+
+var newYorkFinishXPosition = 20;
+var newYorkFinishYPosition = 500;
 
 var kevinXPosition;
 var kevinYPosition;
@@ -18,8 +24,8 @@ var mazeHeight;
 var defaultKevWidth = 25;
 var defaultKevHeight = 37;
 
-var defaultDanielleWidth = 25;
-var defaultDanielleHeight = 25;
+var defaultDanielleWidth = 35;
+var defaultDanielleHeight = 35;
 
 var kevWidth;
 var kevHeight;
@@ -33,6 +39,7 @@ var currentYSpeedMouse = 0;
 var speedConstant = 6;
 
 var boundarySet;
+var winningSet;
 
 var kevinModeActive = false;
 var danielleModeActive = false;
@@ -118,13 +125,23 @@ function initKevinMaze() {
     kevWidth = defaultKevWidth * canvasScaleFactor;
     kevHeight = defaultKevHeight * canvasScaleFactor;
 
+    if (debugMode) {
+        defaultOhioYPosition = 400;
+        defaultOhioXPosition = 650;
+    }
+
     kevinXPosition = Math.round(defaultOhioXPosition * canvasScaleFactor);
     kevinYPosition = Math.round(defaultOhioYPosition * canvasScaleFactor);
+
+    var finishXPosition = Math.round(ohioFinishXPosition * canvasScaleFactor);
+    var finishYPosition = Math.round(ohioFinishYPosition * canvasScaleFactor);
 
     mazeWrapper.css('padding-top', ($(window).height() - mazeHeight - footer.outerHeight()) / 2);
 
     canvas.width = mazeWidth;
     canvas.height = mazeHeight;
+
+    constructWinningSet(finishXPosition, finishYPosition);
 
     setUpKeyListeners();
     //setUpMouseListener();
@@ -150,16 +167,28 @@ function initDanielleMaze() {
     kevWidth = defaultDanielleWidth * canvasScaleFactor;
     kevHeight = defaultDanielleHeight * canvasScaleFactor;
 
+    if (debugMode) {
+        defaultNewYorkXPosition = 100;
+        defaultNewYorkYPosition = 400;
+    }
+
     kevinXPosition = Math.round(defaultNewYorkXPosition * canvasScaleFactor);
     kevinYPosition = Math.round(defaultNewYorkYPosition * canvasScaleFactor);
+
+    var finishXPosition = Math.round(newYorkFinishXPosition * canvasScaleFactor);
+    var finishYPosition = Math.round(newYorkFinishYPosition * canvasScaleFactor);
 
     mazeWrapper.css('padding-top', ($(window).height() - mazeHeight - footer.outerHeight()) / 2);
 
     canvas.width = mazeWidth;
     canvas.height = mazeHeight;
 
+    constructWinningSet(finishXPosition, finishYPosition);
+
     setUpKeyListeners();
     //setUpMouseListener();
+
+
 }
 
 function setUpKeyListeners(){
@@ -205,6 +234,21 @@ function setUpKeyListeners(){
         }
     });
 
+    if (debugMode) {
+        listener.register_combo({
+            "keys" : "d",
+            "on_keydown" : function() {
+                danielleWins();
+            }
+        });
+
+        listener.register_combo({
+            "keys" : "k",
+            "on_keydown" : function() {
+                kevinWins();
+            }
+        });
+    }
 }
 
 function setUpMouseListener() {
@@ -330,6 +374,14 @@ function makeGreen(x, y, w, h) {
     context.fill();
 }
 
+function makeRed(x, y, w, h) {
+    context.beginPath();
+    context.rect(x, y, w, h);
+    context.closePath();
+    context.fillStyle = "red";
+    context.fill();
+}
+
 function constructBoundarySet() {
     boundarySet = {};
     var imgData = context.getImageData(0, 0, mazeWidth, mazeHeight);
@@ -374,7 +426,7 @@ function canMoveTo(x, y) {
     var rightToCheck = leftToCheck + Math.floor(kevWidth/4.0);
 
     // Debug: so you can see the space we're comparing against the boundary
-    if (debugMode == true)
+    if (debugMode)
     {
         makeWhite(leftToCheck, topToCheck, Math.floor(kevWidth/2), Math.floor(kevHeight/2));
     }
@@ -388,9 +440,16 @@ function canMoveTo(x, y) {
                     console.log("that's a wall");
                     return 0; // there's a pixel that overlaps with a boundary -- we can't move here.
                 }
-                else if (false) {
-                    // add a check here for if you won
-                    canMove = 2; // 2 means you win.
+
+                if (winningSet[strToCheck] == true) {
+                    if (danielleModeActive) {
+                        danielleWins();
+                    } else {
+                        kevinWins();
+                    }
+                }
+                else {
+                    console.log('checked ' + strToCheck + ' for victory.');
                 }
             }
         }
@@ -399,4 +458,30 @@ function canMoveTo(x, y) {
         canMove = 0;
     }
     return canMove;
+}
+
+function constructWinningSet(finishXPosition, finishYPosition) {
+    winningSet = {};
+    setTimeout(function() {
+        for (var i = finishXPosition - 2; i <= finishXPosition + 2; i++) {
+            for (var j = finishYPosition - 2; j <= finishYPosition + 2; j++) {
+                winningSet[i + ',' + j] = true;
+                if (debugMode) {
+                    makeRed(i, j, 1, 1);
+                }
+            }
+        }
+    }, 1000);
+}
+
+function danielleWins() {
+
+    $('.danielle-wins').show();
+
+}
+
+function kevinWins() {
+
+    $('.kevin-wins').show();
+
 }

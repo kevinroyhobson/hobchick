@@ -99,3 +99,29 @@ body {
 
     float: right;
 }
+
+.danielle-wins {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background-image: url('/static/img/how/danielle-fancy.png');
+    min-height: 705px;
+    min-width: 799px;
+    background-repeat: no-repeat;
+
+    display: none;
+}
+
+.kevin-wins {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    background-image: url('/static/img/how/kevin-fancy.png');
+    min-height: 705px;
+    min-width: 799px;
+    background-repeat: no-repeat;
+
+    display: none;
+}
