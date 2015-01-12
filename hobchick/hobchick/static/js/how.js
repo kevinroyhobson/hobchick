@@ -49,6 +49,8 @@ var previousMouseY;
 
 var debugMode = false;
 
+var timeStarted;
+
 $(function() {
 
     $('.kevin-head').click(function() {
@@ -66,6 +68,7 @@ $(function() {
         }, 100);
 
         ga('send', 'event', 'maze', 'kevin-start');
+        timeStarted = new Date();
 
     });
 
@@ -84,6 +87,7 @@ $(function() {
         }, 100);
 
         ga('send', 'event', 'maze', 'danielle-start');
+        timeStarted = new Date();
 
     });
 
@@ -477,11 +481,18 @@ function constructWinningSet(finishXPosition, finishYPosition) {
 function danielleWins() {
 
     $('.danielle-wins').show();
+    ga('send', 'event', 'maze', 'danielle-complete', 'duration', getElapsedSeconds());
 
 }
 
 function kevinWins() {
 
     $('.kevin-wins').show();
+    ga('send', 'event', 'maze', 'kevin-complete', 'duration', getElapsedSeconds());
 
+}
+
+function getElapsedSeconds() {
+    var time = new Date();
+    return (time.getTime() - timeStarted.getTime()) / 1000;
 }
