@@ -1,0 +1,77 @@
+
+.picture-placeholder {
+    font-size: 300px;
+    text-align: center;
+    text-align: center;
+}
+
+.fw-fw {
+    width: 424px;
+    height: 393px;
+    margin: auto;
+
+    opacity: 0;
+
+    position: absolute;
+
+    margin-top: 30%;
+    margin-bottom: 10%;
+}
+
+.fw-fw-0 {
+    opacity: 1;
+}
+
+.hobchick-animation {
+    position: absolute;
+    bottom: 100px;
+    padding-bottom: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 100%;
+}
+
+.heading-1 {
+    font-size: 75px;
+}
+
+.hob-name-start {
+    float: left;
+}
+
+.son-name-start {
+    float:left;
+}
+
+.san-name-start {
+    text-align: right;
+    display: inline;
+}
+
+.chick-name-start {
+    text-align: right;
+    float: right;
+}
+
+.hobson-column {
+    position: absolute;
+    width: 50%;
+    float: left;
+    left: 0;
+}
+
+.sanchick-column {
+    width: 50%;
+    float: right;
+    text-align: right;
+}
+
+.mobile-footer-link-home {
+    display: none;
+}
+
+nav.mobile-footer-menu {
+    height: 300px;
+    bottom: -200px;
+}

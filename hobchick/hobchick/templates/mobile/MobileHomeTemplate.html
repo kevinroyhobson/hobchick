@@ -12,13 +12,44 @@
     {% include "IncludesTemplate.html" %}
     <link rel='stylesheet' type='text/css' href='{% static "css/mobile/main.css" %}'>
     <link rel='stylesheet' type='text/css' href='{% static "css/mobile/whiteOnBlack.css" %}'>
+    <link rel='stylesheet' type='text/css' href='{% static "css/mobile/home.css" %}'>
+
+    <script type='text/javascript' src='{% static "js/mobile/home.js" %}'></script>
 
 </head>
 <body style="height:100%;">
     <div class="mobile-main">
-        <div class="heading-1">
-            HOBCHICK
+        <div class="picture-placeholder">
+            <image class="fw-fw fw-fw-0" src="/static/img/home/fw-fw-0.jpg" />
+            <image class="fw-fw fw-fw-1" src="/static/img/home/fw-fw-1.jpg" />
+            <image class="fw-fw fw-fw-2" src="/static/img/home/fw-fw-2.jpg" />
+            <image class="fw-fw fw-fw-3" src="/static/img/home/fw-fw-3.jpg" />
+            <image class="fw-fw fw-fw-4" src="/static/img/home/fw-fw-4.jpg" />
         </div>
+
+        <div class="hobchick-animation main-text text-center">
+            <div class="heading-1">
+                <div class="hobson-column">
+                    <div class="hob-name-start">
+                        HOB
+                    </div>
+                    <div class="son-name-start">
+                        SON
+                    </div>
+                </div>
+
+                <div class="sanchick-column">
+                    <div class="san-name-start">
+                        SAN
+                    </div>
+                    <div class="chick-name-start">
+                        CHICK
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
     </div>
 
     {% include "MobileFooterTemplate.html" %}

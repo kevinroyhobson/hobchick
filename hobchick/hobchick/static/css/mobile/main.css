@@ -1,6 +1,6 @@
 body {
     /*overflow-x: hidden;*/
-    /*overflow-y:hidden;*/
+    /*overflow-y:scroll;*/
 }
 
 .mobile-main {
@@ -31,7 +31,7 @@ nav.mobile-footer-menu {
 
     left: 0;
     width: 100%;
-    height: 300px;
+    height: 400px;
 
     bottom: -300px;
 }
@@ -48,18 +48,34 @@ body.smb-open nav.mobile-footer-menu {
     bottom:0;
 }
 
+body.smb-open nav.mobile-footer-menu .mobile-footer-links-left .mobile-footer-link {
+    visibility: visible;
+}
+
+body.smb-open nav.mobile-footer-menu .mobile-footer-links-right .mobile-footer-link {
+    visibility: visible;
+}
+
+body.smb-open nav.mobile-footer-menu .mobile-footer-link-home {
+    visibility: visible;
+}
+
 .burger {
-    width: 175px;
-    height: 175px;
+    width: 100px;
+    height: 100px;
     background-size: contain;
-    left: -50px;
-    bottom: 60px;
-    position: absolute;
+    left: 10px;
+    bottom: -2px;
+    position: fixed;
     z-index: 21;
 }
 
 .burger-open {
-    left: -100px;
+    left: -50px;
+}
+
+.mobile-footer-link {
+    visibility:hidden;
 }
 
 .mobile-footer-links-right {
@@ -76,6 +92,16 @@ body.smb-open nav.mobile-footer-menu {
     padding-right: 5%;
 }
 
+.mobile-footer-link-home {
+    background-image: url('/static/img/mobile/fw-footer.png');
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    margin-left: auto;
+    margin-right: auto;
+    visibility: hidden;
+}
+
 a:hover {
     text-decoration:none;
     color: #d4b189; /* covered wagon */
@@ -85,6 +111,7 @@ a:hover {
     padding-left: 5%;
     padding-right: 5%;
     padding-top: 40px;
+    padding-bottom: 100px;
 }
 
 .mobile-title {
