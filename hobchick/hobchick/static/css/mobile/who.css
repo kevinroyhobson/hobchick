@@ -20,10 +20,16 @@
     margin-right:auto;
 }
 
+.buttons-holder {
+    position: absolute;
+    left: 50%;
+}
+
 .buttons {
     font-size: 72px;
 
-    margin-top: 125px;
+    position: relative;
+    left: -50%;
 }
 
 .button {
@@ -47,6 +53,8 @@
 
 .flip-button {
     text-align: center;
+    opacity: 0;
+    transition: 1.0s;
 }
 
 .kevin-card-wrapper {

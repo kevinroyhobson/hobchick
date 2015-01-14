@@ -4,8 +4,6 @@ $(function() {
     var cardWidth = $('.card-wrapper').width();
     var cardHeight = cardWidth * (1/0.727379556);
 
-    var verticalPadding = ($(window).height() - cardHeight) / 6;
-
     $('.flip-container').width(cardWidth);
     $('.flipper').width(cardWidth);
     $('.front').width(cardWidth);
@@ -16,11 +14,9 @@ $(function() {
     $('.front').height(cardHeight);
     $('.back').height(cardHeight);
 
-    $('.flip-container').css('padding-top', verticalPadding + 'px');
-    $('.front, .back').css('transition', '1.0s');
+    $('.front, .back, .card-wrapper').css('transition', '1.0s');
 
     bindCards();
-
 
 });
 
@@ -45,14 +41,15 @@ function bindCards() {
 }
 
 function hideCards() {
-    $('.card-wrapper').hide();
     $('.card-wrapper').css('opacity', '0');
+    $('.card-wrapper').css('display', 'none');
 }
 
 function showCard(cardDiv) {
     returnToCardFronts();
-    cardDiv.show();
+    cardDiv.css('display', 'block');
     cardDiv.css('opacity', '1');
+    $('.flip-button').css('opacity', '1');
 }
 
 function setButton(button) {
