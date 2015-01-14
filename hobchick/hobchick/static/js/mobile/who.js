@@ -42,12 +42,12 @@ function bindCards() {
 
 function hideCards() {
     $('.card-wrapper').css('opacity', '0');
-    $('.card-wrapper').css('display', 'none');
+    $('.card-wrapper').css('z-index', '-1');
 }
 
 function showCard(cardDiv) {
     returnToCardFronts();
-    cardDiv.css('display', 'block');
+    cardDiv.css('z-index', '0');
     cardDiv.css('opacity', '1');
     $('.flip-button').css('opacity', '1');
 }

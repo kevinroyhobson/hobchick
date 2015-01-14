@@ -4,11 +4,13 @@
 }
 
 .danielle-card-wrapper {
-    display: none;
+    opacity: 0;
+    z-index: 0;
 }
 
 .kevin-card-wrapper {
     opacity: 0;
+    z-index: 1;
 }
 
 .flip-container .flipper .front {
