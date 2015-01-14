@@ -75,3 +75,18 @@ nav.mobile-footer-menu {
     height: 300px;
     bottom: -200px;
 }
+
+.wedding-date {
+    position: relative;
+    left: -50%;
+}
+
+.wedding-date-wrapper {
+    position: absolute;
+    left: 50%;
+
+    bottom: 125px;
+
+    font-size: 42px;
+    letter-spacing: 10px;
+}
