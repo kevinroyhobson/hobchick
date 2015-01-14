@@ -4,6 +4,18 @@ $(function() {
     var cardWidth = $('.card-wrapper').width();
     var cardHeight = cardWidth * (1/0.727379556);
 
+    // Unless the card height is too big to fit all the buttons and the footer comfortably, in
+    // which case we need to shrink the height to fit and then match the width to that height.
+    var buttonsHeight = $('.buttons-holder').height();
+    var footerHeight = 100;
+    var padding = 50;
+    var maxCardHeight = $(window).height() - buttonsHeight - footerHeight - padding;
+    if (maxCardHeight < cardHeight) {
+        cardHeight = maxCardHeight;
+        cardWidth = cardHeight * 0.727379556;
+    }
+
+
     $('.flip-container').width(cardWidth);
     $('.flipper').width(cardWidth);
     $('.front').width(cardWidth);
