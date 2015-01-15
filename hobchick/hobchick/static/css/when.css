@@ -9,6 +9,10 @@
 
 }
 
+.mobile-clock-container {
+    padding-top: 50%;
+}
+
 .flip-clock-wrapper {
     margin-left: auto;
     margin-right: auto;
