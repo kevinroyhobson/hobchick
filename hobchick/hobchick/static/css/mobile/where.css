@@ -25,9 +25,13 @@ nav.mobile-footer-menu {
 
     left: 0;
     width: 100%;
-    height: 200px;
+    height: 165px;
 
-    bottom: -150px;
+    bottom: -115px;
+}
+
+body.smb-open nav.mobile-footer-menu {
+    bottom:0px;
 }
 
 .mobile-footer-link-home {
