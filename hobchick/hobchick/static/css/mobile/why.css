@@ -1,0 +1,15 @@
+.screen {
+    float: left;
+    background-size: contain;
+    margin: 5px;
+}
+
+.screen-4 {
+    background-image: url('/static/img/why/thanks.jpg');
+    margin-left: -25%;
+}
+
+.row {
+    margin-right: -8px !important;
+    margin-left: 2px !important;
+}

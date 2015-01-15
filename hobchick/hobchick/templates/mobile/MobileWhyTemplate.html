@@ -12,30 +12,65 @@
     {% include "IncludesTemplate.html" %}
     <link rel='stylesheet' type='text/css' href='{% static "css/mobile/main.css" %}'>
     <link rel='stylesheet' type='text/css' href='{% static "css/mobile/blackOnWhite.css" %}'>
-    <link rel='stylesheet' type='text/css' href='{% static "css/flipclock.css" %}'>
-    <link rel='stylesheet' type='text/css' href='{% static "css/when.css" %}'>
+    <link rel='stylesheet' type='text/css' href='{% static "css/mobile/why.css" %}'>
 
-    <script type='text/javascript' src='{% static "js/when.js" %}'></script>
-    <script type='text/javascript' src='{% static "js/lib/flipclock.min.js" %}'></script>
-
+    <script type='text/javascript' src='{% static "js/mobile/why.js" %}'></script>
 </head>
 <body style="height:100%;">
-    <div class="mobile-main">
-        <div class="mobile-container">
+    <div class="why-main-container">
 
-            <div class="clock-container mobile-clock-container">
+        <div class="row row-1">
 
-                <div class="clock">
+            <div class="screen screen-1 non-center-screen">
 
-                </div>
+            </div>
 
-                <div class="wedding-date">
-                    JULY 4, 2015 5:00 PM
-                </div>
+            <div class="screen screen-2 non-center-screen">
+
+            </div>
+
+            <div class="screen screen-x-1 non-center-screen">
 
             </div>
 
         </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row row-2">
+
+            <div class="screen screen-3 non-center-screen">
+
+            </div>
+
+            <div class="screen screen-4">
+
+            </div>
+
+            <div class="screen screen-x-2 non-center-screen">
+
+            </div>
+
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row row-3">
+
+            <div class="screen screen-5 non-center-screen">
+
+            </div>
+
+            <div class="screen screen-6 non-center-screen">
+
+            </div>
+
+            <div class="screen screen-x-3 non-center-screen">
+
+            </div>
+
+        </div>
+
     </div>
 
     {% include "MobileFooterTemplate.html" %}
