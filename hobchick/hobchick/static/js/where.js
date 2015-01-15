@@ -81,7 +81,12 @@ var _stepsToPopMarkers = 499;
 
 var _map;
 
+var _isMobile = false;
+
 $(function() {
+    _isMobile = $('.mobile-footer')[0] != undefined;
+    _planeAnimationSeconds = _isMobile ? 2.0 : 4.0;
+    console.log('isMobile = ' + _isMobile);
     initializeMap();
     $('.footer').css('border-top', '1px dotted grey');
     onResize();
@@ -100,8 +105,9 @@ function initializeMap() {
 
     L.mapbox.accessToken = 'pk.eyJ1Ijoia2V2aW5yb3lob2Jzb24iLCJhIjoiRmpkMTJoNCJ9.Ki1Wowu9Y_CvTp0cQk4iBg';
 
+    var initialzoomSetting = _isMobile ? 6 : 7;
     _map = L.mapbox.map('mapbox-map', 'kevinroyhobson.k618jbcp')
-      .setView(_centerOfMap, 7);
+      .setView(_centerOfMap, initialzoomSetting);
 
     var startingBounds = L.latLngBounds([_cvgLocation, _lgaLocation]);
     //_map.fitBounds(startingBounds);
@@ -213,7 +219,9 @@ function centerAndZoom() {
     _map.setZoom(newZoomLevel);
     _map.panTo(_centerOfMap);
 
-    if (newZoomLevel >= 12) {
+    var maxZoomLevel = _isMobile ? 11 : 12;
+
+    if (newZoomLevel >= maxZoomLevel) {
         shouldKeepZooming = false;
     }
 

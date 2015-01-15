@@ -8,35 +8,24 @@
 
     <title>Hobchick 2015 - Where</title>
 
+    <meta name="viewport" content="initial-scale=0.75, user-scalable=yes" />
+
     {% include "MetaTemplate.html" %}
     {% include "IncludesTemplate.html" %}
     <link rel='stylesheet' type='text/css' href='{% static "css/mobile/main.css" %}'>
     <link rel='stylesheet' type='text/css' href='{% static "css/mobile/blackOnWhite.css" %}'>
-    <link rel='stylesheet' type='text/css' href='{% static "css/flipclock.css" %}'>
-    <link rel='stylesheet' type='text/css' href='{% static "css/when.css" %}'>
+    <link href='//api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+    <link rel='stylesheet' type='text/css' href='{% static "css/where.css" %}'>
+    <link rel='stylesheet' type='text/css' href='{% static "css/mobile/where.css" %}'>
 
-    <script type='text/javascript' src='{% static "js/when.js" %}'></script>
-    <script type='text/javascript' src='{% static "js/lib/flipclock.min.js" %}'></script>
+    <script src='//api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
+    <script type='text/javascript' src='{% static "js/where.js" %}'></script>
+    <script type='text/javascript' src='{% static "js/rotatedMarker.js" %}'></script>
 
 </head>
 <body style="height:100%;">
-    <div class="mobile-main">
-        <div class="mobile-container">
 
-            <div class="clock-container mobile-clock-container">
-
-                <div class="clock">
-
-                </div>
-
-                <div class="wedding-date">
-                    JULY 4, 2015 5:00 PM
-                </div>
-
-            </div>
-
-        </div>
-    </div>
+    <div id='mapbox-map'></div>
 
     {% include "MobileFooterTemplate.html" %}
 
