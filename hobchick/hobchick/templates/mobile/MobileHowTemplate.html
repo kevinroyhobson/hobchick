@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html style="height:100%;">
+<head lang='en'>
+    <meta charset='UTF-8'>
+
+    <title>Hobchick 2015 - How</title>
+
+    {% include "MetaTemplate.html" %}
+    {% include "IncludesTemplate.html" %}
+    <link rel='stylesheet' type='text/css' href='{% static "css/mobile/main.css" %}'>
+    <link rel='stylesheet' type='text/css' href='{% static "css/mobile/blackOnWhite.css" %}'>
+    <link rel='stylesheet' type='text/css' href='{% static "css/flipclock.css" %}'>
+    <link rel='stylesheet' type='text/css' href='{% static "css/when.css" %}'>
+
+    <script type='text/javascript' src='{% static "js/when.js" %}'></script>
+    <script type='text/javascript' src='{% static "js/lib/flipclock.min.js" %}'></script>
+
+</head>
+<body style="height:100%;">
+    <div class="mobile-main">
+        <div class="mobile-container">
+
+            <div class="clock-container mobile-clock-container">
+
+                <div class="clock">
+
+                </div>
+
+                <div class="wedding-date">
+                    JULY 4, 2015 5:00 PM
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    {% include "MobileFooterTemplate.html" %}
+
+</body>
+</html>
+
+<script type='text/javascript' src='{% static "js/mobileHome.js" %}'></script>
