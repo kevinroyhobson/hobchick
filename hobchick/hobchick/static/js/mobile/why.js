@@ -5,6 +5,7 @@ var padding = 5;
 var heightToWidthRatio = 7.0 / 5.0;
 var numTotalPics = 488;
 var picsOnScreenSet;
+var changeScreenTimeouts = [];
 
 // We cache an image one screen transition before it is supposed to be displayed. This way we never see a loading delay during fade-in.
 var cachedImageNumber = 0;
@@ -15,8 +16,6 @@ $(function() {
     onResize();
 
     showThanks();
-
-    initializeScreens();
 
     $(window).resize(function () {
         onResize();
@@ -46,14 +45,21 @@ function initializeScreens() {
     cachedImageNumber = getRandomPictureNumberNotCurrentlyVisible();
     cacheImage(cachedImageNumber);
 
+    _.each(changeScreenTimeouts, function(timeout) {
+        clearTimeout(timeout);
+    });
+
+    changeScreenTimeouts = [];
     var delayIndex = 0;
     var screens = isVertical() ? getScreensForVertical() : getScreensForHorizontal();
     _.each(screens, function(screen) {
 
         var delay = Math.floor(delaysArray[delayIndex] * 1000)
-        setTimeout(function() {
+        var timeout = setTimeout(function() {
             changePicture(screen);
         }, delay);
+
+        changeScreenTimeouts.push(timeout);
 
         delayIndex++;
     });
@@ -71,10 +77,10 @@ function getScreensForVertical() {
 
 function getScreensForHorizontal() {
     var screens = $('.screen-1');
-    screens.push($('.screen-2'));
     screens.push($('.screen-x-1'));
     screens.push($('.screen-3'));
     screens.push($('.screen-x-2'));
+    screens.push($('.screen-2'));
     screens.push($('.screen-4'));
     return screens;
 }
@@ -92,41 +98,74 @@ function onResize() {
 
 function setUpVertical() {
 
-    $('.screen-x-1').hide();
-    $('.screen-x-2').hide();
-    $('.screen-x-3').hide();
+    $('.screen-x-1').css('display','none');
+    $('.screen-x-2').css('display','none');
+
+    $('.screen-5').css('display','block');
+    $('.screen-6').css('display','block');
 
     var footerHeight = 100;
     var maxScreenWidth = Math.floor(($(window).width() - padding * 3) / 2);
     var maxScreenHeight = Math.floor(maxScreenWidth * (1.0/heightToWidthRatio));
     var mainContainerWidth = Math.floor(maxScreenWidth * 2 + padding * 3);
     var pixelsToShoveDown = ($(window).height() - footerHeight - (3*maxScreenHeight) - (4 * padding)) / 2.0;
+    var pixelsToShoveRight = 0;
 
     $('.why-main-container').width(mainContainerWidth + 'px');
     $('.why-main-container').css('padding-top', pixelsToShoveDown + 'px');
+    $('.row').css('padding-left', pixelsToShoveRight + 'px');
     $('.screen').width(maxScreenWidth + 'px');
     $('.screen').height(maxScreenHeight + 'px');
 }
 
 function setUpHorizontal() {
 
-    $('.screen-5').hide();
-    $('.screen-6').hide();
-    $('.screen-x-3').hide();
+    $('.screen-5').css('display','none');
+    $('.screen-6').css('display','none');
+    $('.screen-x-3').css('display','none');
 
-
+    $('.screen-x-1').css('display','block');
+    $('.screen-x-2').css('display','block');
 
     var footerHeight = 100;
-    var maxScreenHeight = Math.floor(($(window).height() - footerHeight - padding * 6) / 3);
-    var maxScreenWidth = Math.floor(maxScreenHeight * heightToWidthRatio);
-    var mainContainerWidth = Math.floor(maxScreenWidth * 2 + padding * 3);
+    var totalWidthAvailable = $(window).width();
+    var totalHeightAvailable = $(window).height() - footerHeight;
+    var maxScreenWidth;
+    var maxScreenHeight;
+    var pixelsToShoveDown = 0;
+    var pixelsToShoveRight = 0;
+
+    maxScreenWidth = Math.floor((totalWidthAvailable - (padding * 4)) / 3);
+    maxScreenHeight = Math.floor(maxScreenWidth * (1.0/heightToWidthRatio));
+    pixelsToShoveDown = (totalHeightAvailable - (2*maxScreenHeight) - (4 * padding)) / 2.0;
+
+    if (maxScreenHeight * 2 + (padding*4) > totalHeightAvailable) {
+        maxScreenHeight = Math.floor((totalHeightAvailable - (padding * 4)) / 2);
+        maxScreenWidth = Math.floor(maxScreenHeight * heightToWidthRatio);
+        pixelsToShoveDown = 0;
+        pixelsToShoveRight = (totalWidthAvailable - (3*maxScreenWidth) - (8*padding)) / 2.0;
+    }
+
+    var mainContainerWidth = Math.floor((maxScreenWidth*3) + (8*padding) + pixelsToShoveRight);
 
     $('.why-main-container').width(mainContainerWidth + 'px');
+    $('.why-main-container').css('padding-top', pixelsToShoveDown + 'px');
+    $('.row').css('padding-left', pixelsToShoveRight + 'px');
     $('.screen').width(maxScreenWidth + 'px');
     $('.screen').height(maxScreenHeight + 'px');
 }
 
 function showThanks() {
+
+    //move thank you to normal spot in the middle
+    if (isVertical()) {
+        $('.screen-4').css('margin-top','5px');
+        $('.screen-4').css('margin-left','-25%');
+    } else {
+        $('.screen-4').css('margin-left','5px');
+        $('.screen-4').css('margin-top','-10%');
+    }
+
     $('.screen-4').animate({'opacity':'1.0'}, 1000);
 
     setTimeout(function() {
@@ -134,6 +173,7 @@ function showThanks() {
 
         setTimeout(function() {
             $('.screen-4').css('margin-left','5px');
+            $('.screen-4').css('margin-top','5px');
         }, 1000);
     }, 4000);
 }
@@ -162,9 +202,10 @@ function changePicture(screen) {
 
     $(screen).animate({'opacity':'1.0'}, 1000);
 
-    window.setTimeout(function() {
+    var timeout = setTimeout(function() {
             changePicture(screen)
         }, 6000);
+    changeScreenTimeouts.push(timeout);
 }
 
 function cacheImage(pictureNumber) {

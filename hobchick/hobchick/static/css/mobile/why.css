@@ -6,10 +6,13 @@
 
 .screen-4 {
     background-image: url('/static/img/why/thanks.jpg');
-    margin-left: -25%;
 }
 
 .row {
     margin-right: -8px !important;
     margin-left: 2px !important;
+}
+
+.screen-x-1, screen-x-2 {
+    margin-right: 0;
 }
