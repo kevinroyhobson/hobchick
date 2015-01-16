@@ -40,5 +40,4 @@ urlpatterns = patterns('',
     url(r'^m/when/$', MobileWhenView.as_view()),
     url(r'^m/where/$', MobileWhereView.as_view()),
     url(r'^m/why/$', MobileWhyView.as_view()),
-    url(r'^m/how/$', MobileHowView.as_view()),
 )
