@@ -481,14 +481,14 @@ function constructWinningSet(finishXPosition, finishYPosition) {
 function danielleWins() {
 
     $('.danielle-wins').show();
-    ga('send', 'event', 'maze', 'danielle-complete', 'duration', getElapsedSeconds());
+    ga('send', 'event', 'maze', 'danielle-complete');
 
 }
 
 function kevinWins() {
 
     $('.kevin-wins').show();
-    ga('send', 'event', 'maze', 'kevin-complete', 'duration', getElapsedSeconds());
+    ga('send', 'event', 'maze', 'kevin-complete');
 
 }
 
