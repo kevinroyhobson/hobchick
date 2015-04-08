@@ -8,7 +8,7 @@ class NavigationFactory:
         pass
 
     def getFooter(self):
-        linkNames = [ 'WHO', 'WHAT', 'WHEN', 'WHERE', 'WHY', 'HOW']
+        linkNames = [ 'WHO', 'WHAT', 'WHEN', 'WHERE', 'WHY', 'HOW', 'RSVP']
         links = map(lambda name: {'display': name, 'url': '/{0}'.format(name.lower())}, linkNames)
         return {'links': links, 'slug': {'display': 'HOBCHICK', 'link': '/'}}
 

@@ -14,7 +14,7 @@ from hobchick.views.mobile.MobileWhatView import MobileWhatView
 from hobchick.views.mobile.MobileWhenView import MobileWhenView
 from hobchick.views.mobile.MobileWhereView import MobileWhereView
 from hobchick.views.mobile.MobileWhyView import MobileWhyView
-from hobchick.views.mobile.MobileHowView import MobileHowView
+from hobchick.views.RsvpView import RsvpView
 
 admin.autodiscover()
 
@@ -33,6 +33,7 @@ urlpatterns = patterns('',
     url(r'^where/$', WhereView.as_view()),
     url(r'^why/$', WhyView.as_view()),
     url(r'^how/$', HowView.as_view()),
+    url(r'^rsvp/$', RsvpView.as_view()),
 
     url(r'^m/$', MobileHomeView.as_view()),
     url(r'^m/who/$', MobileWhoView.as_view()),
