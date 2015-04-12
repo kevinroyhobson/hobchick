@@ -18,6 +18,57 @@
 
     <div class="my-fluid-container">
 
+        <div class="rsvp-card">
+
+            {% if FormWasSubmitted %}
+
+                Thanks!
+
+            {% else %}
+
+            <form action="/rsvp/" method="post" id="rsvp-form">
+
+                {% csrf_token %}
+
+                <div class="rsvp-card-question">
+                    name(s)
+                    <input type="text" name="name" />
+                </div>
+
+                <div class="rsvp-card-question">
+                    <div class="rsvp-radio-wrapper">
+                        <input id="isComingRadio" type="radio" name="isComing" value="true" />
+                        <label for="isComingRadio">cannot wait to celebrate</label>
+                    </div>
+                    <div class="rsvp-radio-wrapper">
+                        <input id="isNotComingRadio" type="radio" name="isComing" value="false" />
+                        <label for="isNotComingRadio">will celebrate from afar</label>
+                    </div>
+                </div>
+
+                <div class="rsvp-title">
+                    TRANSPORTATION
+                </div>
+
+                <div class="rsvp-card-question">
+                    <div class="rsvp-radio-wrapper">
+                        <input id="isTakingTheBusRadio" type="radio" name="isTakingTheBus" value="true" />
+                        <label for="isTakingTheBusRadio">yes please, I will be taking the bus</label>
+                    </div>
+                    <div class="rsvp-radio-wrapper">
+                        <input id="isNotTakingTheBusRadio" type="radio" name="isTakingTheBus" value="false" />
+                        <label for="isNotTakingTheBusRadio">no thanks, I have my own ride</label>
+                    </div>
+                </div>
+
+                <button type="submit" form="rsvp-form" value="submit">send my rsvp</button>
+
+            </form>
+
+            {% endif %}
+
+        </div>
+
         <div class="clearfix">
 
         </div>

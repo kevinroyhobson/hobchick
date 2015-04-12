@@ -22,7 +22,19 @@ class RsvpView(View):
         model = {}
         model['footer'] = self._navigationFactory.getFooter()
 
-        self.sendEmail('Test Dinosaur', False, True)
+        return render_to_response('RsvpTemplate.html', model, context_instance=RequestContext(request))
+
+    def post(self, request):
+        model = {}
+        model['footer'] = self._navigationFactory.getFooter()
+
+        name = request.POST['name']
+        isComing = request.POST['isComing'] == 'true'
+        isTakingTheBus = request.POST['isTakingTheBus'] == 'true'
+
+        self.sendEmail(name, isComing, isTakingTheBus)
+
+        model['FormWasSubmitted'] = True
 
         return render_to_response('RsvpTemplate.html', model, context_instance=RequestContext(request))
 
