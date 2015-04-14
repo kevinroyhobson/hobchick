@@ -6,7 +6,8 @@
         url('/static/img/rsvp/chevron-bottom-right.png') right 0px bottom 0px no-repeat,
         white;
 
-    padding: 150px;
+    padding-top: 275px;
+    padding-left: 100px;
 
     border: 3px solid black;
 
@@ -17,5 +18,32 @@
     margin-right: auto;
     width:60%;
 
+    font-size: 32px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: normal;
+
+
+}
+
+label {
+
+    display: inline;
+    margin-bottom: 0;
+    font-weight: 100;
+
+}
+
+input[type=text] {
+
+    background: transparent;
+    border:none;
+    border-bottom: 1px solid black;
+    outline: 0;
+
+    margin-left: 20px;
+    width: 75%;
+
+    font-family: 'Permanent Marker', cursive;
+    font-size:42px;
 
 }
