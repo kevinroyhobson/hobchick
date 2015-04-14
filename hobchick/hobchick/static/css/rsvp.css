@@ -6,7 +6,7 @@
         url('/static/img/rsvp/chevron-bottom-right.png') right 0px bottom 0px no-repeat,
         white;
 
-    padding-top: 275px;
+    padding-top: 250px;
     padding-left: 100px;
 
     border: 3px solid black;
@@ -45,5 +45,11 @@ input[type=text] {
 
     font-family: 'Permanent Marker', cursive;
     font-size:42px;
+
+}
+
+.rsvp-card-question {
+
+    padding-top: 10px;
 
 }

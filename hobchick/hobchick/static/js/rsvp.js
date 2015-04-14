@@ -1,3 +1,6 @@
+
 $(function(){
+
+    $('#name-input').focus();
 
 });

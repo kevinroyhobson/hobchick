@@ -13,6 +13,8 @@
     <link rel='stylesheet' type='text/css' href='{% static "css/inverted.css" %}'>
     <link rel='stylesheet' type='text/css' href='{% static "css/rsvp.css" %}'>
 
+    <script type='text/javascript' src='{% static "js/rsvp.js" %}'></script>
+
 </head>
 <body style="height:100%;">
 
@@ -32,7 +34,7 @@
 
                 <div class="rsvp-card-question">
                     name(s)
-                    <input type="text" name="name" />
+                    <input type="text" name="name" id="name-input" />
                 </div>
 
                 <div class="rsvp-card-question">
@@ -80,4 +82,3 @@
 </body>
 </html>
 
-<script type='text/javascript' src='{% static "js/min/rsvp.js" %}'></script>
