@@ -32,7 +32,7 @@ class RsvpView(View):
         isComing = request.POST['isComing'] == 'true'
         isTakingTheBus = request.POST['isTakingTheBus'] == 'true'
 
-        self.sendEmail(name, isComing, isTakingTheBus)
+        #self.sendEmail(name, isComing, isTakingTheBus)
 
         model = {}
         model['success'] = True

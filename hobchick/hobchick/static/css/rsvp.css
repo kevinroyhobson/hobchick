@@ -2,22 +2,14 @@
 .rsvp-card {
 
     background:
-        url('/static/img/rsvp/chevron-top-left.png') left 0px top 0px no-repeat,
-        url('/static/img/rsvp/chevron-bottom-right.png') right 0px bottom 0px no-repeat,
+        url('/static/img/rsvp/chevron-top-left.png') left 0px top 0px / 20% no-repeat,
+        url('/static/img/rsvp/chevron-bottom-right.png') right 0px bottom 0px / 20% no-repeat,
         white;
 
-    padding-top: 250px;
     padding-left: 100px;
     padding-right: 100px;
 
     border: 3px solid black;
-
-    margin-top: 3%;
-    height: 75%;
-
-    margin-left: auto;
-    margin-right: auto;
-    width:60%;
 
     font-size: 32px;
     font-family: 'Josefin Sans', sans-serif;
@@ -25,6 +17,10 @@
     line-height: 1.2;
 
 
+}
+
+.rsvp-questions {
+    margin-top: 30%;
 }
 
 label {
@@ -112,6 +108,12 @@ input[type=text] {
 .flip-container {
 	perspective: 1000;
 	transform-style: preserve-3d;
+
+	height: 80%;
+
+	margin-left: auto;
+    margin-right: auto;
+
 }
 
 /* flip the pane when hovered */
@@ -123,9 +125,6 @@ input[type=text] {
 }
 
 .flip-container, .front, .back {
-	width: 1000px;
-	height: 728px;
-
 	-webkit-transition: 1s; /* Safari */
     transition: 1s;
 }
