@@ -70,13 +70,15 @@ input[type=text] {
 
 .is-coming-question {
 
-    padding-top: 20px;
+    margin-top: 20px;
+    padding-bottom: 5px;
 
 }
 
 .bus-question {
 
-    padding-top: 20px;
+    margin-top: 20px;
+    padding-bottom: 5px;
 
 }
 
@@ -88,4 +90,13 @@ input[type=text] {
     padding-left: 10px;
     padding-right: 10px;
 
+}
+
+.name-prompt.error {
+    color: #a51e2d;
+    font-weight: bold;
+}
+
+.rsvp-card-question.error {
+    border-left: 3px solid #a51e2d;
 }
