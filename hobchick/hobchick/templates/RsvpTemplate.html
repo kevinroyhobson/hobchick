@@ -23,56 +23,65 @@
 
     <div class="my-fluid-container">
 
-        <div class="rsvp-card">
+        <div class="flip-container">
 
-            {% if FormWasSubmitted %}
+            <div class="flipper">
 
-                Thanks!
+                <div class="front rsvp-card">
 
-            {% else %}
 
-            <form action="/rsvp/" method="post" id="rsvp-form">
+                    <form action="/rsvp/" method="post" id="rsvp-form">
 
-                {% csrf_token %}
+                        {% csrf_token %}
 
-                <div class="rsvp-card-question name-question">
-                    <span class="name-prompt">name(s)</span>
-                    <input type="text" name="name" id="name-input" />
+                        <div class="rsvp-card-question name-question">
+                            <span class="name-prompt">name(s)</span>
+                            <input type="text" name="name" id="name-input" />
+                        </div>
+
+                        <div class="rsvp-card-question is-coming-question">
+                            <div class="rsvp-radio-wrapper">
+                                <input id="isComingRadio" type="radio" name="isComing" value="true" />
+                                <label for="isComingRadio">cannot wait to celebrate</label>
+                            </div>
+                            <div class="rsvp-radio-wrapper">
+                                <input id="isNotComingRadio" type="radio" name="isComing" value="false" />
+                                <label for="isNotComingRadio">will celebrate from afar</label>
+                            </div>
+                        </div>
+
+                        <div class="rsvp-title">
+                            TRANSPORTATION
+                        </div>
+
+                        <div class="rsvp-card-question bus-question">
+                            <div class="rsvp-radio-wrapper">
+                                <input id="isTakingTheBusRadio" type="radio" name="isTakingTheBus" value="true" />
+                                <label for="isTakingTheBusRadio">yes please, I will be taking the bus</label>
+                            </div>
+                            <div class="rsvp-radio-wrapper">
+                                <input id="isNotTakingTheBusRadio" type="radio" name="isTakingTheBus" value="false" />
+                                <label for="isNotTakingTheBusRadio">no thanks, I have my own ride</label>
+                            </div>
+                        </div>
+
+                        <button class="submit-button" type="submit" form="rsvp-form" value="submit">send my rsvp</button>
+
+                    </form>
+
                 </div>
 
-                <div class="rsvp-card-question is-coming-question">
-                    <div class="rsvp-radio-wrapper">
-                        <input id="isComingRadio" type="radio" name="isComing" value="true" />
-                        <label for="isComingRadio">cannot wait to celebrate</label>
+                <div class="back rsvp-card">
+
+                    <div class="thanks">
+                        thank you!
                     </div>
-                    <div class="rsvp-radio-wrapper">
-                        <input id="isNotComingRadio" type="radio" name="isComing" value="false" />
-                        <label for="isNotComingRadio">will celebrate from afar</label>
-                    </div>
+
                 </div>
 
-                <div class="rsvp-title">
-                    TRANSPORTATION
-                </div>
-
-                <div class="rsvp-card-question bus-question">
-                    <div class="rsvp-radio-wrapper">
-                        <input id="isTakingTheBusRadio" type="radio" name="isTakingTheBus" value="true" />
-                        <label for="isTakingTheBusRadio">yes please, I will be taking the bus</label>
-                    </div>
-                    <div class="rsvp-radio-wrapper">
-                        <input id="isNotTakingTheBusRadio" type="radio" name="isTakingTheBus" value="false" />
-                        <label for="isNotTakingTheBusRadio">no thanks, I have my own ride</label>
-                    </div>
-                </div>
-
-                <button class="submit-button" type="submit" form="rsvp-form" value="submit">send my rsvp</button>
-
-            </form>
-
-            {% endif %}
-
+            </div>
         </div>
+    </div>
 
         <div class="clearfix">
 

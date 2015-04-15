@@ -19,7 +19,7 @@ $(function(){
                 url: '/rsvp/',
                 data: formData,
                 success: function(response) {
-                    alert('cool.');
+                    $('.flip-container').addClass('flipped');
                 }
 
             });

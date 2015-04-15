@@ -8,6 +8,7 @@
 
     padding-top: 250px;
     padding-left: 100px;
+    padding-right: 100px;
 
     border: 3px solid black;
 
@@ -99,4 +100,60 @@ input[type=text] {
 
 .rsvp-card-question.error {
     border-left: 3px solid #a51e2d;
+}
+
+.thanks {
+    font-size: 60px;
+    text-align: center;
+    padding-top: 50px;
+}
+
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000;
+	transform-style: preserve-3d;
+}
+
+/* flip the pane when hovered */
+.flip-container.flipped .back {
+    transform: rotateX(0deg);
+}
+.flip-container.flipped .front {
+    transform: rotateX(180deg);
+}
+
+.flip-container, .front, .back {
+	width: 1000px;
+	height: 728px;
+
+	-webkit-transition: 1s; /* Safari */
+    transition: 1s;
+}
+
+.flipper {
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
+
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	transform: rotateX(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateX(180deg);
 }
