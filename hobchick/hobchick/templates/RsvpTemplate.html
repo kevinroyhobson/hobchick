@@ -35,12 +35,12 @@
 
                 {% csrf_token %}
 
-                <div class="rsvp-card-question">
+                <div class="rsvp-card-question name-question">
                     name(s)
                     <input type="text" name="name" id="name-input" />
                 </div>
 
-                <div class="rsvp-card-question">
+                <div class="rsvp-card-question is-coming-question">
                     <div class="rsvp-radio-wrapper">
                         <input id="isComingRadio" type="radio" name="isComing" value="true" />
                         <label for="isComingRadio">cannot wait to celebrate</label>
@@ -55,7 +55,7 @@
                     TRANSPORTATION
                 </div>
 
-                <div class="rsvp-card-question">
+                <div class="rsvp-card-question bus-question">
                     <div class="rsvp-radio-wrapper">
                         <input id="isTakingTheBusRadio" type="radio" name="isTakingTheBus" value="true" />
                         <label for="isTakingTheBusRadio">yes please, I will be taking the bus</label>
@@ -66,7 +66,7 @@
                     </div>
                 </div>
 
-                <button type="submit" form="rsvp-form" value="submit">send my rsvp</button>
+                <button class="submit-button" type="submit" form="rsvp-form" value="submit">send my rsvp</button>
 
             </form>
 

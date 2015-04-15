@@ -21,6 +21,7 @@
     font-size: 32px;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: normal;
+    line-height: 1.2;
 
 
 }
@@ -48,8 +49,43 @@ input[type=text] {
 
 }
 
-.rsvp-card-question {
+.rsvp-title {
+
+    padding-top: 20px;
+    margin-bottom: -20px;
+
+}
+
+.name-question {
 
     padding-top: 10px;
+
+}
+
+.rsvp-radio-wrapper {
+
+    padding-left: 50px;
+
+}
+
+.is-coming-question {
+
+    padding-top: 20px;
+
+}
+
+.bus-question {
+
+    padding-top: 20px;
+
+}
+
+.submit-button {
+
+    margin-left: 50px;
+    margin-top: 25px;
+
+    padding-left: 10px;
+    padding-right: 10px;
 
 }
