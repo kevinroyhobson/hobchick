@@ -1,3 +1,5 @@
+import json
+from django.http import HttpResponse
 from hobchick.views.NavigationFactory import NavigationFactory
 
 __author__ = 'kevin'
@@ -25,8 +27,6 @@ class RsvpView(View):
         return render_to_response('RsvpTemplate.html', model, context_instance=RequestContext(request))
 
     def post(self, request):
-        model = {}
-        model['footer'] = self._navigationFactory.getFooter()
 
         name = request.POST['name']
         isComing = request.POST['isComing'] == 'true'
@@ -34,9 +34,10 @@ class RsvpView(View):
 
         self.sendEmail(name, isComing, isTakingTheBus)
 
-        model['FormWasSubmitted'] = True
+        model = {}
+        model['success'] = True
 
-        return render_to_response('RsvpTemplate.html', model, context_instance=RequestContext(request))
+        return HttpResponse(json.dumps(model), content_type="application/json")
 
     def sendEmail(self, name, isComing, isTakingTheBus):
 
