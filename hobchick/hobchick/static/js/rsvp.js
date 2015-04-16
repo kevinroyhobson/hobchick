@@ -2,6 +2,7 @@
 $(function(){
 
     $('#name-input').focus();
+    $('.rsvp-card-back').height($('.rsvp-card-front').height());
 
     $('#rsvp-form').submit(function(event) {
 

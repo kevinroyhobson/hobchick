@@ -8,6 +8,8 @@
 
     padding-left: 100px;
     padding-right: 100px;
+    padding-bottom: 25px;
+
 
     border: 3px solid black;
 
@@ -82,7 +84,7 @@ input[type=text] {
 .submit-button {
 
     margin-left: 50px;
-    margin-top: 25px;
+    margin-top: 10px;
 
     padding-left: 10px;
     padding-right: 10px;
@@ -101,7 +103,7 @@ input[type=text] {
 .thanks {
     font-size: 60px;
     text-align: center;
-    padding-top: 50px;
+    padding-top: 300px;
 }
 
 /* entire container, keeps perspective */
@@ -109,11 +111,12 @@ input[type=text] {
 	perspective: 1000;
 	transform-style: preserve-3d;
 
-	height: 80%;
+    width: 65%;
 
 	margin-left: auto;
     margin-right: auto;
 
+    margin-top: 2%;
 }
 
 /* flip the pane when hovered */
@@ -144,6 +147,10 @@ input[type=text] {
 	position: absolute;
 	top: 0;
 	left: 0;
+
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /* front pane, placed above back */
