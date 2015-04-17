@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html style="height:100%;">
+<head lang='en'>
+    <meta charset='UTF-8'>
+
+    <title>Hobchick 2015 - Rsvp</title>
+
+    {% include "MetaTemplate.html" %}
+    {% include "IncludesTemplate.html" %}
+    <link rel='stylesheet' type='text/css' href='{% static "css/mobile/main.css" %}'>
+    <link rel='stylesheet' type='text/css' href='{% static "css/mobile/blackOnWhite.css" %}'>
+    <link rel='stylesheet' type='text/css' href='{% static "css/mobile/rsvp.css" %}'>
+
+</head>
+<body style="height:100%;">
+    <div class="mobile-main">
+        <div class="mobile-container">
+
+            <div class="mobile-title">
+                CEREMONY
+            </div>
+            <div class="mobile-description">
+                July 4, 2015, 5:00 PM<br/>
+                The Barn at Fallingwater<br/>
+                1478 Mill Run Road<br/>
+                Mill Run, PA 15464<br/><br/>
+                The ceremony will be held outside, weather permitting.
+            </div>
+
+            <div class="mobile-title">
+                RECEPTION
+            </div>
+            <div class="mobile-description">
+                To immediately follow the ceremony at the Barn at Fallingwater
+            </div>
+
+            <div class="mobile-title">
+                ACCOMMODATIONS
+            </div>
+            <div class="mobile-description">
+                There are a block of rooms reserved for the Hobson/Sanchick wedding at <a target="_blank" href="http://www.7springs.com/lodging/hotel/">Seven Springs Resort</a> on Thursday, July 2, Friday, July 3 and Saturday, July 4.
+                Please call (866) 437-1300 to book rooms by June 2, as the hotel can't guarantee the rooms after that.
+            </div>
+
+            <div class="mobile-title">
+                ADDITIONAL ACTIVITIES
+            </div>
+            <div class="mobile-description">
+                We will be organizing a rafting trip with Laurel Highland River Tours on Friday, July 3.
+                If you're interested in joining please email <a target="_blank" href="mailto:chick@hobchick.com">chick@hobchick.com</a> and check back here later for more information.<br/><br/>
+                We also encourage you to take advantage of the many activities the Laurel Highlands region has to offer:
+                <ul>
+                    <li><a target="_blank" href="http://www.fallingwater.org/">Frank Lloyd Wright's Fallingwater</a></li>
+                    <li><a target="_blank" href="http://kentuckknob.com/">Frank Lloyd Wright's Kentuck Knob</a></li>
+                    <li><a target="_blank" href="http://www.dcnr.state.pa.us/stateparks/findapark/ohiopyle/">Ohiopyle State Park</a></li>
+                    <li><a target="_blank" href="http://www.laurelhighlands.com/activities/">Laurel Highlands</a></li>
+                    <li><a target="_blank" href="http://www.7springs.com/adventures/outdoor-activities/">Seven Springs outdoor activities</a></li>
+                    <li><a target="_blank" href="http://www.7springs.com/golf/">Seven Springs golf</a></li>
+                    <li><a target="_blank" href="http://www.7springs.com/trillium-spa/">Seven Springs Trillium Spa</a></li>
+                </ul>
+            </div>
+
+            <div class="mobile-title">
+                HOBCHICK.COM
+            </div>
+            <div class="mobile-description">
+                Please send any bugs or feedback to <a target="_blank" href="mailto:hob@hobchick.com">hob@hobchick.com</a>.
+            </div>
+        </div>
+    </div>
+
+    {% include "MobileFooterTemplate.html" %}
+
+</body>
+</html>
+
+<script type='text/javascript' src='{% static "js/min/mobileHome-1.min.js" %}'></script>

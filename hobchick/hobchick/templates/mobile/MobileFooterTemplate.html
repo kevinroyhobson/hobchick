@@ -6,6 +6,12 @@
 
         <nav class="mobile-footer-menu transitioning-menu">
 
+            <div class="mobile-footer-links-top">
+                <div class="mobile-footer-link">
+                    <a href="{{ footer.topLink.url }}">{{ footer.topLink.display }}</a>
+                </div>
+            </div>
+
             <div class="mobile-footer-links-left">
                 {% for link in footer.leftLinks %}
                     <div class="mobile-footer-link">

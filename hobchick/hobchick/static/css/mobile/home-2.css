@@ -71,11 +71,6 @@
     display: none;
 }
 
-nav.mobile-footer-menu {
-    height: 300px;
-    bottom: -200px;
-}
-
 .wedding-date {
     position: relative;
     left: -50%;
