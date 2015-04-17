@@ -1,0 +1,59 @@
+
+.mobile-container {
+    font-weight: normal;
+}
+
+.rsvp-card-question {
+    padding-bottom: 25px;
+    padding-top: 15px;
+}
+
+.name-question {
+
+}
+
+input[type=text] {
+    width: 95%;
+
+    background: transparent;
+    border:none;
+    border-bottom: 1px solid black;
+    outline: 0;
+
+    font-family: 'Permanent Marker', cursive;
+    font-size:72px;
+
+    margin-top: -30px;
+}
+
+.rsvp-radio-wrapper {
+    padding-left: 35px;
+}
+
+label {
+    display: inline;
+    margin-bottom: 0;
+    font-weight: 100;
+}
+
+.transportation-title {
+    margin-top: -20px;
+}
+
+.submit-button {
+
+    margin-top: 10px;
+
+    padding-left: 30px;
+    padding-right: 30px;
+
+}
+
+.name-prompt.error {
+    color: #a51e2d;
+    font-weight: bold;
+}
+
+.rsvp-card-question.error {
+    border-left: 3px solid #a51e2d;
+}

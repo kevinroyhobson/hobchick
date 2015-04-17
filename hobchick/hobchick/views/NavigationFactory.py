@@ -19,6 +19,7 @@ class NavigationFactory:
                                   {'display': 'WHY', 'url': '/m/why'}],
                  'rightLinks': [{'display': 'WHAT', 'url': '/m/what'},
                                   {'display': 'WHERE', 'url': '/m/where'},
-                                  {'display': 'HOME', 'url': '/m/'}]};
+                                  {'display': 'RSVP', 'url': '/m/rsvp'}],
+                 'topLink': {'display': 'HOME', 'url': '/m'}};
 
         return links;
