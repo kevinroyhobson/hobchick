@@ -18,7 +18,8 @@ $(function(){
                 url: '/rsvp/',
                 data: formData,
                 success: function(response) {
-                    alert('cool.');
+                    $('.mobile-container').html('<div class="mobile-title">THANKS!</div>');
+                    ga('send', 'event', 'rsvp', 'submit');
                 }
 
             });

@@ -21,6 +21,7 @@ $(function(){
                 data: formData,
                 success: function(response) {
                     $('.flip-container').addClass('flipped');
+                    ga('send', 'event', 'rsvp', 'submit');
                 }
 
             });
