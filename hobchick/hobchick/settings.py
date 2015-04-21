@@ -102,7 +102,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '../../../logs/hobchick/debug.log',
+            'filename': '/home/ubuntu/logs/hobchick/debug.log',
         },
     },
     'loggers': {
