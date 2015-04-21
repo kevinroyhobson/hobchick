@@ -102,7 +102,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '/home/kevin/logs/hobchick/debug.log',
+            'filename': '../../../logs/hobchick/debug.log',
         },
     },
     'loggers': {
