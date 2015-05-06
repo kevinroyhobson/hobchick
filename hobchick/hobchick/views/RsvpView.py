@@ -16,7 +16,7 @@ class RsvpView(View):
     def __init__(self):
         self._navigationFactory = NavigationFactory()
         self._sendGridUsername = 'kevinroyhobson'
-        self._sendGridPassword = 'smushbush'
+        self._sendGridPassword = 'smushbush55'
         self._hobEmailAddress = 'Kev <hob@hobchick.com>'
         self._chickEmailAddress = 'Yells <chick@hobchick.com>'
 
