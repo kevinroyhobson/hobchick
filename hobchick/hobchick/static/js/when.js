@@ -6,17 +6,16 @@ $(function() {
     var now = new Date();
 
     var secondsTillTheWedding = (wedding.getTime() - now.getTime()) / 1000;
+    if (secondsTillTheWedding < 0) {
+        secondsTillTheWedding = 0;
+    }
 
     // Put a leading zero on the clock if we're less than 100 days from the wedding.
     callbacks = new Object();
     callbacks.start = function() {
-      if(secondsTillTheWedding < (3600 * 24 * 100)) {
-        leading_zero = $('ul.flip').first().clone();
-        leading_zero.find('li.flip-clock-active').removeClass('flip-clock-active');
-        leading_zero.find('li.flip-clock-before').removeClass('flip-clock-before');
-        leading_zero.find('.inn').html('0');
 
-        $('span.days').after(leading_zero);
+      if(secondsTillTheWedding < (3600 * 24 * 100) && secondsTillTheWedding > 0) {
+        insertLeadingZeroCallback();
       }
     }
 
@@ -26,4 +25,17 @@ $(function() {
         countdown: true,
         callbacks: callbacks
     });
+
+    if (secondsTillTheWedding == 0) {
+      insertLeadingZeroCallback();
+    }
 });
+
+function insertLeadingZeroCallback () {
+    leading_zero = $('ul.flip').first().clone();
+    leading_zero.find('li.flip-clock-active').removeClass('flip-clock-active');
+    leading_zero.find('li.flip-clock-before').removeClass('flip-clock-before');
+    leading_zero.find('.inn').html('0');
+
+    $('span.days').after(leading_zero);
+}
