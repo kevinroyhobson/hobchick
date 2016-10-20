@@ -125,7 +125,7 @@ function initializeMap() {
 function initializePlane(plane) {
     plane.marker = L.rotatedMarker(plane.startingLocation, {
         icon: L.icon({
-          iconUrl: 'https://www.mapbox.com/maki/renders/airport-24@2x.png',
+          iconUrl: '/static/img/where/plane.png',
           iconSize: [48, 48],
         })
     });
