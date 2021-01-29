@@ -1,4 +1,20 @@
-from django.conf.urls import patterns, include, url
+"""hobchick URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/3.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path, re_path
 
 from django.contrib import admin
 from hobchick.views.WhatView import WhatView
@@ -17,30 +33,28 @@ from hobchick.views.mobile.MobileWhyView import MobileWhyView
 from hobchick.views.RsvpView import RsvpView
 from hobchick.views.mobile.MobileRsvpView import MobileRsvpView
 
-admin.autodiscover()
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+# ]
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'hobchick.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+urlpatterns = [
+    path('admin/', admin.site.urls),
 
-    url(r'^admin/', include(admin.site.urls)),
+    re_path(r'^$', HomeView.as_view()),
 
-    url(r'^$', HomeView.as_view()),
+    re_path(r'^who/$', WhoView.as_view()),
+    re_path(r'^what/$', WhatView.as_view()),
+    re_path(r'^when/$', WhenView.as_view()),
+    re_path(r'^where/$', WhereView.as_view()),
+    re_path(r'^why/$', WhyView.as_view()),
+    re_path(r'^how/$', HowView.as_view()),
+    re_path(r'^rsvp/$', RsvpView.as_view()),
 
-    url(r'^who/$', WhoView.as_view()),
-    url(r'^what/$', WhatView.as_view()),
-    url(r'^when/$', WhenView.as_view()),
-    url(r'^where/$', WhereView.as_view()),
-    url(r'^why/$', WhyView.as_view()),
-    url(r'^how/$', HowView.as_view()),
-    url(r'^rsvp/$', RsvpView.as_view()),
-
-    url(r'^m/$', MobileHomeView.as_view()),
-    url(r'^m/who/$', MobileWhoView.as_view()),
-    url(r'^m/what/$', MobileWhatView.as_view()),
-    url(r'^m/when/$', MobileWhenView.as_view()),
-    url(r'^m/where/$', MobileWhereView.as_view()),
-    url(r'^m/why/$', MobileWhyView.as_view()),
-    url(r'^m/rsvp/$', MobileRsvpView.as_view()),
-)
+    re_path(r'^m/$', MobileHomeView.as_view()),
+    re_path(r'^m/who/$', MobileWhoView.as_view()),
+    re_path(r'^m/what/$', MobileWhatView.as_view()),
+    re_path(r'^m/when/$', MobileWhenView.as_view()),
+    re_path(r'^m/where/$', MobileWhereView.as_view()),
+    re_path(r'^m/why/$', MobileWhyView.as_view()),
+    re_path(r'^m/rsvp/$', MobileRsvpView.as_view()),
+]

@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.template import RequestContext
 from django.views.generic import View
 from hobchick.views.NavigationFactory import NavigationFactory
@@ -14,4 +14,4 @@ class HomeView(View):
         model = {}
         model['footer'] = self._navigationFactory.getFooter()
         model['footer']['slug'] = {'display': '7.4.15', 'link': None}
-        return render_to_response('HomeTemplate.html', model, context_instance=RequestContext(request))
+        return render(request, 'HomeTemplate.html', model)

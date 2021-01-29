@@ -4,7 +4,7 @@ from hobchick.views.NavigationFactory import NavigationFactory
 
 __author__ = 'kevin'
 
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.template import RequestContext
 from django.views.generic import View
 import sendgrid
@@ -24,7 +24,7 @@ class RsvpView(View):
         model = {}
         model['footer'] = self._navigationFactory.getFooter()
 
-        return render_to_response('RsvpTemplate.html', model, context_instance=RequestContext(request))
+        return render(request, 'RsvpTemplate.html', model)
 
     def post(self, request):
 

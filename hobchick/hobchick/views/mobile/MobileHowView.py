@@ -13,4 +13,4 @@ class MobileHowView(View):
     def get(self, request):
         model = {}
         model['footer'] = self._navigationFactory.getMobileFooter()
-        return render_to_response('MobileHowTemplate.html', model, context_instance=RequestContext(request))
+        return render_to_response('MobileHowTemplate.html', model)
