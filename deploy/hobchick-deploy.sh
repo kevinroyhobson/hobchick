@@ -2,6 +2,10 @@
 
 echo "Deploying hobchick.com..."
 
+apt-get install python3 python3-pip python3-django apache2 libapache2-mod-wsgi-py3
+pip3 install sendgrid
+
+
 echo "Updating to the tip of master."
 cd ~/src/hobchick
 git checkout master

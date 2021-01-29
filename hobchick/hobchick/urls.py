@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-
+from django.views.generic.base import RedirectView
 from django.contrib import admin
+
 from hobchick.views.WhatView import WhatView
 from hobchick.views.mobile.MobileHomeView import MobileHomeView
 from hobchick.views.WhereView import WhereView
@@ -32,10 +33,6 @@ from hobchick.views.mobile.MobileWhereView import MobileWhereView
 from hobchick.views.mobile.MobileWhyView import MobileWhyView
 from hobchick.views.RsvpView import RsvpView
 from hobchick.views.mobile.MobileRsvpView import MobileRsvpView
-
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-# ]
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -57,4 +54,6 @@ urlpatterns = [
     re_path(r'^m/where/$', MobileWhereView.as_view()),
     re_path(r'^m/why/$', MobileWhyView.as_view()),
     re_path(r'^m/rsvp/$', MobileRsvpView.as_view()),
+
+    re_path(r'^favicon\.ico$', RedirectView.as_view(url='/static/favicon.ico', permanent=True)),
 ]
