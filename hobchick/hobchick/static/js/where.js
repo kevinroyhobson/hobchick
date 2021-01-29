@@ -106,8 +106,9 @@ function initializeMap() {
     L.mapbox.accessToken = 'pk.eyJ1Ijoia2V2aW5yb3lob2Jzb24iLCJhIjoiRmpkMTJoNCJ9.Ki1Wowu9Y_CvTp0cQk4iBg';
 
     var initialzoomSetting = _isMobile ? 6 : 7;
-    _map = L.mapbox.map('mapbox-map', 'kevinroyhobson.k618jbcp')
-      .setView(_centerOfMap, initialzoomSetting);
+    _map = L.mapbox.map('mapbox-map')
+      .setView(_centerOfMap, initialzoomSetting)
+      .addLayer(L.mapbox.styleLayer('mapbox://styles/kevinroyhobson/ckkijg3980xb817o14upcw4nj'));
 
     var startingBounds = L.latLngBounds([_cvgLocation, _lgaLocation]);
     //_map.fitBounds(startingBounds);
@@ -339,6 +340,6 @@ function addFallingwaterPointsOfInterest() {
     _barnPoi.bringToFront();
 
     setTimeout(function() {
-        _barnPoi.openPopup();
-    }, 2000);
+        $('img[title="The Barn at Fallingwater"]').click();
+    }, 1000);
 }
