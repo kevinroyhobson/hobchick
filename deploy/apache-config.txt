@@ -1,0 +1,17 @@
+Add the following to /etc/apache2/apache2.conf to set apache to serve the app (adjust paths as necessary):
+
+Alias /static/ /var/www/static/
+
+<Directory /var/www/static>
+	Require all granted
+</Directory>
+
+WSGIScriptAlias / /home/kev/src/hobchick/hobchick/hobchick/wsgi.py
+WSGIPythonPath /home/kev/src/hobchick/hobchick
+
+<Directory /home/kev/src/hobchick/hobchick/hobchick>
+	<Files wsgi.py>
+		Require all granted
+	</Files>
+</Directory>
+
