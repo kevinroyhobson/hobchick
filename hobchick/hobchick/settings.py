@@ -25,7 +25,7 @@ SECRET_KEY = '@lrfvx$$^n4snnlpw-9a!e4ml9gvy#ut0km$6o$82jaxc)u86)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['3.16.188.125', 'www.hobchick.com', 'hobchick.com']
+ALLOWED_HOSTS = ['www.hobchick.com', 'hobchick.com']
 
 
 # Application definition

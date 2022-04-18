@@ -1,0 +1,9 @@
+version: "3"
+services:
+  django-apache2:
+    build: .
+    container_name: hobchick-server
+    ports:
+      - '80:80'
+    volumes:
+      - $PWD/hobchick:/var/www/html/hobchick
